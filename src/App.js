@@ -7,22 +7,38 @@ class App extends React.Component {
     htmlOut: ""
   }
 
+  headingMatch = (str) => {
+    const match = str.match(/\n*#+\s+.+\n*/g);
+    if (match) {
+      const matchStr = match[0];
+      const level = matchStr.match(/#+/)[0].length;
+      str = `
+        <h${level}>
+          ${matchStr.replace(/#+/, "").trim()}
+        </h${level}>
+        `;
+    }
+    return str;
+  }
+
+  codeBlockMatch = (str) => {
+    const match = str.match(/`{3}\n*.*\n*/g);
+    if (match) {
+      const matchStr = match[0];
+      str = `<pre><code>${matchStr.replace(/`{3}\n*/g, "").trim()}</code></pre>`;
+    }
+    return str;
+  }
+
   replacer = (inputTxt) => {
     const inputArr = inputTxt.split('\n');
     return inputArr.map(str => {
 
-      const headingMatch = str.match(/\n*#+\s+.+\n*/g);
-      if (headingMatch !== null) {
-        const matchStr = headingMatch[0];
-        const level = matchStr.match(/#+/)[0].length;
-        return `
-          <h${level}>
-            ${matchStr.replace(/#+/, "").trim()}
-          </h${level}>
-          `;
-      }
+      let match = this.headingMatch(str);
+          match = this.codeBlockMatch(match);
 
-      return str;
+
+      return match;
     })
   }
 
