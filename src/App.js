@@ -10,8 +10,8 @@ class App extends React.Component {
   replacer = (inputTxt) => {
     const inputArr = inputTxt.split('\n');
     return inputArr.map(str => {
-      const headingMatch = str.match(/\n*#+\s+.+\n*/g);
 
+      const headingMatch = str.match(/\n*#+\s+.+\n*/g);
       if (headingMatch !== null) {
         const matchStr = headingMatch[0];
         const level = matchStr.match(/#+/)[0].length;
@@ -21,25 +21,13 @@ class App extends React.Component {
           </h${level}>
           `;
       }
+
       return str;
     })
-
-    // const heading = match.replace(/\n*#+\s+.+\n*/g, (m) => {
-    //   const level = m.match(/#+/)[0].length;
-    //   return `
-    //     <h${level}>
-    //       ${m.replace(/#+/, "").trim()}
-    //     </h${level}>
-    //     `;
-    // });
-
-    // return heading;
-
   }
 
   handleChange = (e) => {
     const inputTxt = e.target.value;
-    // const html = txt.replace(/(.*)/g, (match) => this.replacer(match))
     const htmlOut = this.replacer(inputTxt).join("");
 
     this.setState({
