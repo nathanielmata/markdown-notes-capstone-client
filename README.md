@@ -10,7 +10,6 @@ You can access a working prototype of the React app here: https://your-app-clien
 
 This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
-
 #### Landing Page
 
 - as an UNREGISTERED USER
@@ -32,6 +31,8 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 - as an UNREGISTERED USER
 - I want to see a list of public notes saved to a REGISTERED USER account from a unique url
 - So I can read a public note in Markdown or HTML in a browser
+
+---
 
 #### Login/Signup Page
 
@@ -97,11 +98,17 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 ### Wireframes???
 
-Landing/Login Page
-:-------------------------:
-![Landing/Login Page](/github-images/wireframes/landing-page-wireframe.png)
+Landing Page  
+:-------------------------: 
+
+![Landing Page](./github-images/wireframes/landing-page-wireframe.png)
+
+<!-- Landing/Login Page
+:-------------------------:  -->
+
+<!-- ![Landing/Login Page](/github-images/wireframes/landing-page-wireframe.png)
 Landing/Register Page
-![Landing/Register Page](/github-images/wireframes/landing-page-wireframe.png)
+![Landing/Register Page](/github-images/wireframes/landing-page-wireframe.png) -->
 
 ## Screenshots (later)
 
