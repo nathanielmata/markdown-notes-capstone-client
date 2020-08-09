@@ -102,9 +102,11 @@ Landing Page
 :-------------------------: 
 ![Landing Page](./github-images/wireframes/landing-page-wireframe2.png)
 
-Sign up /Login Page  
+Sign up Page
 :-------------------------:
 ![Sign up Page](./github-images/wireframes/signup-page-wireframe.png)
+
+Login Page  
 :-------------------------:
 ![Login Page](./github-images/wireframes/login-page-wireframe.png)
 
