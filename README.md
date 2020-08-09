@@ -100,14 +100,18 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 Landing Page  
 :-------------------------: 
-![Landing Page](./github-images/wireframes/landing-page-wireframe.png)
+![Landing Page](./github-images/wireframes/landing-page-wireframe2.png)
 
-<!-- Landing/Login Page
-:-------------------------:  -->
+Sign up /Login Page  
+:-------------------------:
+![Sign up Page](./github-images/wireframes/signup-page-wireframe.png)
+:-------------------------:
+![Login Page](./github-images/wireframes/login-page-wireframe.png)
 
-<!-- ![Landing/Login Page](/github-images/wireframes/landing-page-wireframe.png)
-Landing/Register Page
-![Landing/Register Page](/github-images/wireframes/landing-page-wireframe.png) -->
+User public Page  
+:-------------------------: 
+![User public Page](./github-images/wireframes/user-public-page-wireframe.png)
+
 
 ## Screenshots (later)
 
