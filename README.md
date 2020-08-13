@@ -100,7 +100,7 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 Landing Page  
 :-------------------------: 
-![Landing Page](./github-images/wireframes/landing-page-wireframe2.png)
+![Landing Page](./github-images/wireframes/landing-page-wireframe3.png)
 
 Sign up Page
 :-------------------------:
