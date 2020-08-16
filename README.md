@@ -114,6 +114,22 @@ User public Page
 :-------------------------: 
 ![User public Page](./github-images/wireframes/user-public-page-wireframe.png)
 
+User dashboard `new doc` Page  
+:-------------------------: 
+![User dashboard `new doc` Page](./github-images/wireframes/dashboard-new-page-wireframe.png)
+
+User dashboard `notes list` Page  
+:-------------------------: 
+![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe.png)
+
+User dashboard `export dropdown` Page  
+:-------------------------: 
+![User dashboard `export dropdown` Page](./github-images/wireframes/dashboard-export-page-wireframe.png)
+
+User dashboard `user preferences dropdown` Page  
+:-------------------------: 
+![User dashboard `user preferences dropdown` Page](./github-images/wireframes/dashboard-profile-logout-page-wireframe.png)
+
 
 ## Screenshots (later)
 
