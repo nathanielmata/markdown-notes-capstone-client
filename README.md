@@ -34,6 +34,14 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 ---
 
+#### FAQ page
+
+- as a UNREGISTERED/REGISTERED USER
+- I want to a FAQ page to help me understand how to use the app
+- So I can effectively use the app
+
+---
+
 #### Login/Signup Page
 
 - as a REGISTERED USER
