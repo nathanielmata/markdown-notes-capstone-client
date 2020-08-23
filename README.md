@@ -122,17 +122,17 @@ User public Page
 :-------------------------: 
 ![User public Page](./github-images/wireframes/user-public-page-wireframe.png)
 
-User dashboard `new doc` Page  
+User dashboard `new doc` Page
 :-------------------------: 
 ![User dashboard `new doc` Page](./github-images/wireframes/dashboard-new-page-wireframe.png)
 
-User dashboard `notes list` Page  
-:-----:-----:
-![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe.png):![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe_mobile.png)
+User dashboard `notes list` Page | Mobile
+------ | ------  
+![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe_mobile.png)
 
-User dashboard `editor` Page  
-:-----:-----:-----:
-![User dashboard `editor` Page](./github-images/wireframes/dashboard-editor-wireframe.png):![User dashboard `notes list` Page](./github-images/wireframes/dashboard-editor-wireframe_mobile.png):![User dashboard `notes list` Page](./github-images/wireframes/dashboard-preview-wireframe_mobile.png)
+User dashboard `editor` Page | Mobile Editor | Mobile Preview
+------ | ------ | ------  
+![User dashboard `editor` Page](./github-images/wireframes/dashboard-editor-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-editor-wireframe_mobile.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-preview-wireframe_mobile.png)
 
 User dashboard `export dropdown` Page  
 :-------------------------: 
