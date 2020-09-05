@@ -28,7 +28,17 @@ textarea {
   display: block;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+pre > code {
+  display: block;
+  white-space: pre-wrap;
+  word-break: keep-all;
 }
+
+code {
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.25);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  padding: 0.5em;
+}
+
