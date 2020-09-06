@@ -6,7 +6,7 @@ import { LockIcon, UnlockIcon } from './Icons';
 const Sidebar = (props) => (
   <nav className="nav__sidebar">
 
-    <div className="nav__sidebar--close" onClick={() => props.toggleHiddenMenu("sidebar")}>
+    <div className="nav__sidebar--close" onClick={() => props.closeMenus()}>
       <SidebarCloseIcon />
     </div>
 
@@ -19,7 +19,7 @@ const Sidebar = (props) => (
       <ul>{props.notes.map((note, idx) => {
         return (
           <li key={idx}>
-            <Link to={`/note/${note.id}`} title={note.title} onClick={() => props.toggleHiddenMenu("sidebar")}>
+            <Link to={`/note/${note.id}`} title={note.title} onClick={() => props.closeMenus()}>
               <>
                 {!note.public 
                   ? <LockIcon className="nav__sidebar--icons"/>

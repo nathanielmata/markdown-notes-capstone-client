@@ -30,7 +30,7 @@ const Header = (props) => (
     <nav className="header__nav">
       <ul>
         <li>
-          <Link to="/note/new" className="button" onClick={() => props.toggleHiddenMenu("sidebar")}>NEW+</Link>
+          <Link to="/note/new" className="button" onClick={() => props.closeMenus()}>NEW+</Link>
         </li>
       </ul>
     </nav>

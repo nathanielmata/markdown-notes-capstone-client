@@ -19,6 +19,17 @@ class App extends React.Component {
     }
   };
 
+  closeMenus = () => {
+    this.setState((state) => {
+      // close menus when a navigation link is clicked
+      const menus = {};
+      Object.keys(state.menus).forEach((k) => {
+        menus[k] = false;
+      })
+      return {menus};
+    });
+  }
+
   toggleHiddenMenu = (name) => {
     this.setState((state) => {
       // toggle the clicked menu and close other menus we are tracking with state
@@ -51,12 +62,13 @@ class App extends React.Component {
         <BrowserRouter>
           <Header 
             menus={{ sidebar, user }}
+            closeMenus={this.closeMenus}
             toggleHiddenMenu={this.toggleHiddenMenu}
             user={full_name} >
               { this.state.menus.sidebar &&
                 <Sidebar 
                   notes={NOTES}
-                  toggleHiddenMenu={this.toggleHiddenMenu} />
+                  closeMenus={this.closeMenus} />
               }
           </Header>
           <main className="main--container">
