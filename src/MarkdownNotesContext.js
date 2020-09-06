@@ -1,7 +1,8 @@
 import React from 'react';
 
 const MarkdownNotesContext = React.createContext({
-    getNote: () => {},
+  toggleHiddenMenu: () => {},
+  getNote: () => {},
 });
 
 export default MarkdownNotesContext;
