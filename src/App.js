@@ -2,26 +2,21 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import { LockIcon, MarkdownIcon, FileIcon } from './components/Icons';
+import NoteCreate from './components/NoteCreate';
+import NoteUpdate from './components/NoteUpdate';
+import NotFound from './components/NotFound';
+import MarkdownNotesContext from './MarkdownNotesContext';
 import NOTES from './seeds/seeds.notes';
 
-import mdParser from "./mdParser";
 import "./App.css"; 
 
 class App extends React.Component {
   state = {
-    noteTitle: NOTES[0].title,
-    inputTxt: NOTES[0].content,
-    htmlOut: "",
     menus: {
       sidebar: false,
       user: false,
     }
   };
-
-  componentDidMount = () => {
-    this.generatePreview(this.state.inputTxt);
-  }
 
   toggleHiddenMenu = (name) => {
     this.setState((state) => {
@@ -34,48 +29,22 @@ class App extends React.Component {
       })
       return {menus: {...menus}};
     });
-
   }
 
-  replacer = (inputTxt) => {
-    const inputArr = inputTxt.split("\n");
-    return inputArr.map((str) => {
-      let match = mdParser.headingMatch(str);
-      match = mdParser.codeBlockMatch(match);
-
-      return match;
-    });
-  };
-
-  generatePreview = (inputVal) => {
-    const inputTxt = inputVal;
-    const htmlOut = this.replacer(inputTxt).join("");
-    this.setState({
-      inputTxt,
-      htmlOut,
-    });
-  };
-
-  handleTitleChange = (e) => {
-    const titleTxt = e.target.value;
-    console.log(titleTxt);
-    this.setState({
-      noteTitle: titleTxt
-    });
-
+  getNote = (id) => {
+    const note = NOTES.find(note => note.id === +id);
+    return note ? note : "notfound";
   }
-
-  handleChange = (e) => {
-    const inputTxt = e.target.value;
-    this.generatePreview(inputTxt);
-  };
 
   render() {
     const full_name = {name: "Nathaniel Mata"}
     const { sidebar, user } = {...this.state.menus}
+    const contextValue = {
+      getNote: this.getNote,
+    };
+
     return (
-      <div className="App">
-        <BrowserRouter>        
+      <div className="App">      
           <Header 
             menus={{ sidebar, user }}
             toggleHiddenMenu={this.toggleHiddenMenu}
@@ -85,45 +54,21 @@ class App extends React.Component {
                   notes={NOTES}
                   toggleHiddenMenu={this.toggleHiddenMenu} />
               }
-            </Header>
-
+          </Header>
           <main className="main--container">
-            <div className="editor__wrapper">
-              <div className="editor__above">
-                <div className="editor__title">
-                  <div className="editor__title--label">TITLE</div>
-                  <input
-                    className="editor__title--input"
-                    value={this.state.noteTitle}
-                    onChange={(e) => this.handleTitleChange(e)}
-                    type="text" />
-                </div>
-                <div className="editor__buttons">
-                  <button><LockIcon /></button>
-                  <button><MarkdownIcon /></button>
-                  <button><FileIcon /></button>
-                </div>
-              </div>
-              <div id="editor" className="editor--split main--split">
-                <div className="editor--inner">
-                  <textarea
-                    className="editor--textarea"
-                    value={this.state.inputTxt}
-                    onChange={(e) => this.handleChange(e)}
-                  ></textarea>
-                </div>
-              </div>
-
-              <div id="preview" className="preview--split main--split">
-                <div
-                  className="preview--inner"
-                  dangerouslySetInnerHTML={{ __html: this.state.htmlOut }}
-                />
-              </div>
-            </div>
+            <BrowserRouter>
+              <MarkdownNotesContext.Provider value={contextValue}>
+                <Switch>
+                  {/* <Route exact path="/" component={Dashboard}/>
+                  <Route exact path="/profile/:id" component={Profile}/> */}
+                  <Route exact path="/note/new" component={NoteCreate} />
+                  <Route path="/note/:id" component={NoteUpdate}/>
+                  <Route component={NotFound} />
+                </Switch>
+              </MarkdownNotesContext.Provider>
+            </BrowserRouter>
           </main>
           {/* <footer>Contact details</footer> */}
-        </BrowserRouter>
       </div>
     );
   }
