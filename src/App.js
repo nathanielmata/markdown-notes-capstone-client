@@ -45,7 +45,8 @@ class App extends React.Component {
     };
 
     return (
-      <div className="App">      
+      <div className="App">   
+        <BrowserRouter>
           <Header 
             menus={{ sidebar, user }}
             toggleHiddenMenu={this.toggleHiddenMenu}
@@ -57,7 +58,6 @@ class App extends React.Component {
               }
           </Header>
           <main className="main--container">
-            <BrowserRouter>
               <MarkdownNotesContext.Provider value={contextValue}>
                 <Switch>
                   <Route exact path="/" component={Dashboard}/>
@@ -67,9 +67,9 @@ class App extends React.Component {
                   <Route component={NotFound} />
                 </Switch>
               </MarkdownNotesContext.Provider>
-            </BrowserRouter>
           </main>
           {/* <footer>Contact details</footer> */}
+        </BrowserRouter>
       </div>
     );
   }
