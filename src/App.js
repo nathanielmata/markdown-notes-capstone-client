@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import NoteCreate from './components/NoteCreate';
 import NoteUpdate from './components/NoteUpdate';
+import Dashboard from './components/Dashboard';
 import NotFound from './components/NotFound';
 import MarkdownNotesContext from './MarkdownNotesContext';
 import NOTES from './seeds/seeds.notes';
@@ -59,8 +60,8 @@ class App extends React.Component {
             <BrowserRouter>
               <MarkdownNotesContext.Provider value={contextValue}>
                 <Switch>
-                  {/* <Route exact path="/" component={Dashboard}/>
-                  <Route exact path="/profile/:id" component={Profile}/> */}
+                  <Route exact path="/" component={Dashboard}/>
+                  {/* <Route exact path="/profile/:id" component={Profile}/> */}
                   <Route exact path="/note/new" component={NoteCreate} />
                   <Route path="/note/:id" component={NoteUpdate}/>
                   <Route component={NotFound} />
