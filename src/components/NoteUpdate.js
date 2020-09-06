@@ -6,7 +6,8 @@ class NoteUpdate extends React.Component {
   static contextType = MarkdownNotesContext;
 
   render() {
-    const note = this.context.getNote(this.props.match.params.id);
+    const id = this.props.match.params.id;
+    const note = this.context.getNote(id);
     if (note === "notfound") {
       return (
         <h2>Note not found.</h2>

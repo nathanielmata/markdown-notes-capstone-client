@@ -1,11 +1,8 @@
 import React from 'react';
-import MarkdownNotesContext from '../MarkdownNotesContext';
 import { LockIcon, MarkdownIcon, FileIcon } from './Icons';
 import mdParser from "../mdParser";
 
 class Note extends React.Component { 
-  static contextType = MarkdownNotesContext;
-
   state = {
     title: "",
     content: "",
@@ -13,16 +10,16 @@ class Note extends React.Component {
   };
 
   componentDidMount = () => {
-    const note = this.props.note;
-    this.setState({
-      title: note.title,
-      content: note.content,
-    });
-    
-    this.generatePreview(note.content);
+    this.handleMarkup(this.handleLoading());
   };
 
-  replacer = (content) => {
+  componentDidUpdate = (prevProps) => {
+    if(this.props.note.id !== prevProps.note.id ) {      
+      this.handleMarkup(this.handleLoading());
+    };
+  };
+
+  handleParsing = (content) => {
     const arr = content.split("\n");
     return arr.map((str) => {
       let match = mdParser.headingMatch(str);
@@ -32,10 +29,18 @@ class Note extends React.Component {
     });
   };
 
-  generatePreview = (content) => {
-    const markup = this.replacer(content).join("");
+  handleLoading = () => {
+    const note = this.props.note;
     this.setState({
-      content,
+      title: note.title,
+      content: note.content,
+    });
+    return note.content;
+  }
+
+  handleMarkup = (content) => {
+    const markup = this.handleParsing(content).join("");
+    this.setState({
       markup,
     });
   };
@@ -50,11 +55,13 @@ class Note extends React.Component {
 
   handleEditorChange = (e) => {
     const content = e.target.value;
-    this.generatePreview(content);
+    this.setState({
+      content,
+    });
+    this.handleMarkup(content);
   };
 
   render() {
-
     return (
       <div className="editor__wrapper">
         <div className="editor__above">
