@@ -33,6 +33,7 @@ class App extends React.Component {
   }
 
   getNote = (id) => {
+    // this.toggleHiddenMenu("sidebar");
     const note = NOTES.find(note => note.id === +id);
     return note ? note : "notfound";
   }
@@ -41,6 +42,7 @@ class App extends React.Component {
     const full_name = {name: "Nathaniel Mata"}
     const { sidebar, user } = {...this.state.menus}
     const contextValue = {
+      toggleHiddenMenu: this.toggleHiddenMenu,
       getNote: this.getNote,
     };
 

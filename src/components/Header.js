@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { SidebarOpenIcon } from './Icons';
 
 const Header = (props) => (
   <header className="header">
+    {props.children}
     <>
       {!props.menus.sidebar && 
         <div className="sidebar__toggle" onClick={() => props.toggleHiddenMenu("sidebar")}>
@@ -12,7 +14,6 @@ const Header = (props) => (
         </div>
       }
     </>
-    {props.children}
     <div className="header__user">
       <div className="header__user--inner" onClick={() => props.toggleHiddenMenu("user")}>
         <img className="header__user--img" src="/user-pic-greybox.jpg" alt={props.user.name + "'s user image"} />
@@ -28,7 +29,9 @@ const Header = (props) => (
     </div>
     <nav className="header__nav">
       <ul>
-        <li><button>NEW+</button></li>
+        <li>
+          <Link to="/note/new" className="button" onClick={() => props.toggleHiddenMenu("sidebar")}>NEW+</Link>
+        </li>
       </ul>
     </nav>
   </header>

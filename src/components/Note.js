@@ -1,8 +1,11 @@
 import React from 'react';
+import MarkdownNotesContext from '../MarkdownNotesContext';
 import { LockIcon, MarkdownIcon, FileIcon } from './Icons';
 import mdParser from "../mdParser";
 
 class Note extends React.Component { 
+  static contextType = MarkdownNotesContext;
+
   state = {
     title: "",
     content: "",
@@ -14,7 +17,7 @@ class Note extends React.Component {
   };
 
   componentDidUpdate = (prevProps) => {
-    if(this.props.note.id !== prevProps.note.id ) {      
+    if(this.props.note.id !== prevProps.note.id ) { 
       this.handleMarkup(this.handleLoading());
     };
   };
