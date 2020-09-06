@@ -15,7 +15,7 @@ const Header = (props) => (
     {props.children}
     <div className="header__user">
       <div className="header__user--inner" onClick={() => props.toggleHiddenMenu("user")}>
-        <img className="header__user--img" src="user-pic-greybox.jpg" alt={props.user.name + "'s user image"} />
+        <img className="header__user--img" src="/user-pic-greybox.jpg" alt={props.user.name + "'s user image"} />
         <span className="header__user--span">{props.user.name}</span>
       </div>
       <>
