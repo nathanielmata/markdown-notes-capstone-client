@@ -69,7 +69,7 @@ class Note extends React.Component {
       <div className="editor__wrapper">
         <div className="editor__above">
           <div className="editor__title">
-            <div className="editor__title--label">TITLE</div>
+            <h5 className="editor__title--label label">TITLE</h5>
             <input
               className="editor__title--input"
               value={this.state.title}

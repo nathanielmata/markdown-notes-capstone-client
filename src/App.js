@@ -5,9 +5,11 @@ import Sidebar from './components/Sidebar';
 import NoteCreate from './components/NoteCreate';
 import NoteUpdate from './components/NoteUpdate';
 import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
 import NotFound from './components/NotFound';
 import MarkdownNotesContext from './MarkdownNotesContext';
 import NOTES from './seeds/seeds.notes';
+import USERS from './seeds/seeds.users';
 
 import "./App.css"; 
 
@@ -43,28 +45,31 @@ class App extends React.Component {
     });
   }
 
+  getUser = (id) => {
+    const user = USERS.find(user => user.id === +id);
+    return user ? user : "notfound";
+  }
+
   getNote = (id) => {
-    // this.toggleHiddenMenu("sidebar");
     const note = NOTES.find(note => note.id === +id);
     return note ? note : "notfound";
   }
 
   render() {
-    const full_name = {name: "Nathaniel Mata"}
-    const { sidebar, user } = {...this.state.menus}
     const contextValue = {
       toggleHiddenMenu: this.toggleHiddenMenu,
       getNote: this.getNote,
+      getUser: this.getUser,
     };
 
     return (
       <div className="App">   
         <BrowserRouter>
           <Header 
-            menus={{ sidebar, user }}
+            menus={{ ...this.state.menus }}
             closeMenus={this.closeMenus}
             toggleHiddenMenu={this.toggleHiddenMenu}
-            user={full_name} >
+            user={USERS[2]} >
               { this.state.menus.sidebar &&
                 <Sidebar 
                   notes={NOTES}
@@ -75,7 +80,7 @@ class App extends React.Component {
               <MarkdownNotesContext.Provider value={contextValue}>
                 <Switch>
                   <Route exact path="/" component={Dashboard}/>
-                  {/* <Route exact path="/profile/:id" component={Profile}/> */}
+                  <Route exact path="/profile/:id" component={Profile}/>
                   <Route exact path="/note/new" component={NoteCreate} />
                   <Route path="/note/:id" component={NoteUpdate}/>
                   <Route component={NotFound} />

@@ -5,6 +5,7 @@
   --main-btn: rgb(239, 239, 239);
   --main-hover: rgb(225, 225, 225);
   --main-menu-bg: #C4C4C4;
+  --main-label: #8b898a;
 }
 
 .App {
@@ -68,6 +69,16 @@ nav .button {
   font-weight: 500;
   padding: 5px 10px;
   font-size: 1em;
+}
+
+label,
+.label {
+  display: block;
+  font-size: 10px;
+  color: var(--main-label);
+  margin: 0 0 4px 0;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 .header {
@@ -144,6 +155,7 @@ nav .button {
 
 .header__user--inner {
   position: relative;
+  cursor: pointer;
   z-index: 9;
 }
 
@@ -303,6 +315,25 @@ nav .button {
   background-color: var(--main-menu-bg);
 }
 
+.main_profile--form > * {
+  display: inline-block;
+  vertical-align: top;
+  margin: 28px;
+}
+
+.main__profile--img > img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.main__profile--details {
+  display: inline-block;
+}
+
+.main__profile--details{
+  display: inline-block;
+}
+
 .main--split {
   display: inline-block;
   vertical-align: top;
@@ -352,10 +383,9 @@ nav .button {
 }
 
 .editor__title--label {
-  font-size: 10px;
-  color: #8b898a;
-  margin-bottom: 4px;
+  margin: 0 0 4px 0;
 }
+
 .editor__title--input {
   width: 160px;
   height: 32px;
