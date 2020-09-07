@@ -1,11 +1,10 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-import { render } from 'react-snapshot';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
 
-render(
+ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
