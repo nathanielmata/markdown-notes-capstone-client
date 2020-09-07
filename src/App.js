@@ -63,7 +63,7 @@ class App extends React.Component {
     };
 
     return (
-      <div className="App">   
+      <div className="App">
         <BrowserRouter>
           <Header 
             menus={{ ...this.state.menus }}
@@ -79,7 +79,9 @@ class App extends React.Component {
           <main className="main--container">
               <MarkdownNotesContext.Provider value={contextValue}>
                 <Switch>
-                  <Route exact path="/" component={Dashboard}/>
+                  <Route exact path="/" render={(props) => 
+                   <Dashboard notes={NOTES} {...props} />
+                  }/>
                   <Route exact path="/profile/:id" component={Profile}/>
                   <Route exact path="/note/new" component={NoteCreate} />
                   <Route path="/note/:id" component={NoteUpdate}/>

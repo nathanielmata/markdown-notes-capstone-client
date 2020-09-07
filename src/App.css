@@ -295,7 +295,7 @@ label,
   row-gap: 20px;
 }
 
-.main__dashboard--latest {
+.main__dashboard--card {
   display: inline-block;
   width: 100%;
   height: 160px;
@@ -303,16 +303,41 @@ label,
   color: var(--main-text);
 }
 
-.main__dashboard--latest a {
-  display: block;
+.main__dashboard--card a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   text-align: center;
-  padding: 20px;
 }
 
-.main__dashboard--latest a:hover {
+.main__dashboard--card a > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main__dashboard--card a:hover {
   background-color: var(--main-menu-bg);
+}
+
+.main__dashboard--card-name {
+  height: 80%;
+  background-color: transparent;
+  padding: 20px;
+  vertical-align: middle;
+}
+
+.main__dashboard--card-date {
+  height: 20%;
+  background-color: var(--main-text);
+  color: var(--main-dark);
+  border: 1px solid var(--main-menu-bg);
+  padding: 20px;
+  vertical-align: middle;
 }
 
 .main_profile--form > * {

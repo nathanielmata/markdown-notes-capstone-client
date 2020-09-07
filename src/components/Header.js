@@ -22,8 +22,9 @@ const Header = (props) => (
       <>
         {props.menus.user &&
           <ul className="header__dropdown header__user--dropdown">
-            <li><Link to={`/profile/${props.user.id}`}>Profile</Link></li>
-            <li><Link to="/">Logout</Link></li>
+            <li><Link to="/" onClick={() => props.closeMenus()}>Dashboard</Link></li>
+            <li><Link to={`/profile/${props.user.id}`} onClick={() => props.closeMenus()}>Profile</Link></li>
+            <li><Link to="/" onClick={() => props.closeMenus()}>Logout</Link></li>
           </ul>}
       </>
     </div>
