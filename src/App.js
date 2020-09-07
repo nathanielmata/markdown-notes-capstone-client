@@ -21,6 +21,20 @@ class App extends React.Component {
     }
   };
 
+  componentDidMount() {
+    document.addEventListener("keydown", this.escKeyPress, false);
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("keydown", this.escKeyPress, false);
+  }
+
+  escKeyPress = ({key}) => {
+    if (key === "Escape") {
+      this.closeMenus();
+    }
+  }
+
   closeMenus = () => {
     this.setState((state) => {
       // close menus when a navigation link is clicked
