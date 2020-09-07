@@ -17,6 +17,12 @@ class Profile extends React.Component {
               <input type="text" name={key} value={val} />
             </div>
           )}
+            <div>
+              <label for="password">Password:</label>
+              <input type="text" name="password" value="" />
+            </div>
+            <br />
+            <button>Edit</button>
         </div>
       </form>
     );
