@@ -1,5 +1,10 @@
+App Name: Markdown Notes
+
 New Note Page
 =============  
+Live page: https://xenodochial-goodall-6abbc0.netlify.app/note/new  
+
+---
 
 Action --> 
   ```User clicks "NEW+" button in top right of header```  
@@ -52,6 +57,9 @@ Result -->
 
 Edit Note Page
 ==============  
+Live page: https://xenodochial-goodall-6abbc0.netlify.app/note/1 
+
+---
 
 Action --> 
   ```User removes or inserts Markdown in editor to edit existing note```  
@@ -97,6 +105,10 @@ Result -->
 
 List Notes and Search Bar(Sidebar)
 ==================================  
+Live page: https://xenodochial-goodall-6abbc0.netlify.app
+Note: Click sidebar icon in top left header to open sidebar
+
+---
 
 Action --> 
   ```User clicks sidebar icon in top left of screen```  
@@ -127,7 +139,10 @@ Result -->
 ---
 
 User Dashboard Page
-===================  
+=================== 
+Live page: https://xenodochial-goodall-6abbc0.netlify.app
+
+--- 
 
 Action --> 
   ```User navigates to dashboard page by clicking the dashboard link in user dropdown menu in header```  
@@ -145,6 +160,9 @@ Result -->
 
 User Profile Page
 =================  
+Live page: https://xenodochial-goodall-6abbc0.netlify.app/profile/3
+
+--- 
 
 Action --> 
   ```User navigates to profile page by clicking the profile link in user dropdown menu in header```  
