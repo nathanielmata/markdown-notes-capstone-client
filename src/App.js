@@ -25,7 +25,7 @@ class App extends React.Component {
     document.addEventListener("keydown", this.escKeyPress, false);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     document.removeEventListener("keydown", this.escKeyPress, false);
   }
 
