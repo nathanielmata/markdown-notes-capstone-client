@@ -1,6 +1,6 @@
 # Markdown Notes Capstone (done)
 
-Note taking app that formats your text to markdown
+'Markdown Notes' is a note taking app that lets you create notes in a markdown editor and preview the html output, then save the note to your user account where you can tag the note as public or private.
 
 ## Working Prototype (later)
 
@@ -12,9 +12,17 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 #### Landing Page
 
+- as an UNREGISTERED USER/REGISTERED USER
+- I want to go to a landing page that introduces the app and explains its features and provides links to sign-in page, sign-up page and the try-it-out editor.
+- So I can learn more about the app and how it works
+
+---
+
+#### Landing Page
+
 - as an UNREGISTERED USER
-- I want to write a note in a Markdown editor while previewing the output HTML
-- So I can save my note as a Markdown or HTML file to my computer
+- I want to try out the editor without registering and create a note in a Markdown editor while previewing the output HTML
+- So I can export my note as a Markdown or HTML file to my computer
 
 ---
 
@@ -34,15 +42,15 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 ---
 
-#### FAQ page
+#### FAQ/Help page
 
 - as a UNREGISTERED/REGISTERED USER
-- I want to a FAQ page to help me understand how to use the app
+- I want to go to an FAQ page to help me understand how to use the app
 - So I can effectively use the app
 
 ---
 
-#### Login/Signup Page
+#### Login
 
 - as a REGISTERED USER
 - I want to login to my account with my unique username and password and start a logged in session
@@ -54,7 +62,7 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 - as a REGISTERED USER
 - I want to view my user dashboard
-- So I can see a list of my saved notes in Markdown
+- So I can view and search a list of my saved Markdown notes
 
 ---
 
@@ -69,8 +77,8 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 #### User dasboard page
 
 - as a REGISTERED USER
-- I want to retrieve a unique url that lists where all my public notes are displayed
-- So I can share the url with collaborators
+- I want to generate a unique url where my public notes can be viewed on the open web
+- So I can share the url with anyone
 
 ---
 
@@ -78,36 +86,36 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 - as a REGISTERED USER
 - I want to view my profile
-- So I can edit my password
+- So I can edit my password, username, user email and name displayed on my public page
 
 ---
 
 #### User new note page
 
 - as a REGISTERED USER
-- I want to create a new note
-- So I can edit and save the note in Mardown while previewing the output HTML
+- I want to create a new Markdown note
+- So I can edit and save the Markdown note in the edotor while previewing the output HTML
 
 ---
 
 #### User edit note page
 
 - as a REGISTERED USER
-- I want to view an existing note
-- So I can edit and save the note in Mardown while previewing the output HTML
+- I want to search for and view a saved note
+- So I can edit and save the note in Markdown while previewing the output HTML
 
 ---
 
 #### User new & edit note page
 
 - as a REGISTERED USER
-- I want to make a note public
+- I want to make a Markdown note public
 - So anyone can view a note from a unique URL in a web browser
 
 ### Wireframes???
 
 Landing Page  
-:-------------------------: 
+:-------------------------:
 ![Landing Page](./github-images/wireframes/landing-page-wireframe3.png)
 
 Sign up Page
@@ -119,29 +127,28 @@ Login Page
 ![Login Page](./github-images/wireframes/login-page-wireframe.png)
 
 User public Page  
-:-------------------------: 
+:-------------------------:
 ![User public Page](./github-images/wireframes/user-public-page-wireframe.png)
 
 User dashboard `new doc` Page
-:-------------------------: 
+:-------------------------:
 ![User dashboard `new doc` Page](./github-images/wireframes/dashboard-new-page-wireframe.png)
 
-User dashboard `notes list` Page | Mobile
------- | ------  
-![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe_mobile.png)
+| User dashboard `notes list` Page                                                                  | Mobile                                                                                                   |
+| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe_mobile.png) |
 
-User dashboard `editor` Page | Mobile Editor | Mobile Preview
------- | ------ | ------  
-![User dashboard `editor` Page](./github-images/wireframes/dashboard-editor-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-editor-wireframe_mobile.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-preview-wireframe_mobile.png)
+| User dashboard `editor` Page                                                               | Mobile Editor                                                                                         | Mobile Preview                                                                                         |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| ![User dashboard `editor` Page](./github-images/wireframes/dashboard-editor-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-editor-wireframe_mobile.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-preview-wireframe_mobile.png) |
 
 User dashboard `export dropdown` Page  
-:-------------------------: 
+:-------------------------:
 ![User dashboard `export dropdown` Page](./github-images/wireframes/dashboard-export-page-wireframe.png)
 
 User dashboard `user preferences dropdown` Page  
-:-------------------------: 
+:-------------------------:
 ![User dashboard `user preferences dropdown` Page](./github-images/wireframes/dashboard-profile-logout-page-wireframe.png)
-
 
 ## Screenshots (later)
 
