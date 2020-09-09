@@ -1,68 +1,213 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Markdown Notes Capstone (done)
 
-## Available Scripts
+Note taking app that formats your text to markdown
 
-In the project directory, you can run:
+## Working Prototype (later)
 
-### `yarn start`
+You can access a working prototype of the React app here: https://your-app-client.herokuapp.com/ and Node app here: https://your-app-server.herokuapp.com/
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Stories???
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
-### `yarn test`
+#### Landing Page
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- as an UNREGISTERED USER
+- I want to write a note in a Markdown editor while previewing the output HTML
+- So I can save my note as a Markdown or HTML file to my computer
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Login/Signup Page
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- as an UNREGISTERED USER
+- I want to create an account with a username and password
+- So I can save notes to my account
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `yarn eject`
+#### User Public Page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- as an UNREGISTERED USER
+- I want to see a list of public notes saved to a REGISTERED USER account from a unique url
+- So I can read a public note in Markdown or HTML in a browser
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### FAQ page
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- as a UNREGISTERED/REGISTERED USER
+- I want to a FAQ page to help me understand how to use the app
+- So I can effectively use the app
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Login/Signup Page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- as a REGISTERED USER
+- I want to login to my account with my unique username and password and start a logged in session
+- So I can view my user dashboard and decide where to navigate in my account
 
-### Code Splitting
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### User dasboard page
 
-### Analyzing the Bundle Size
+- as a REGISTERED USER
+- I want to view my user dashboard
+- So I can see a list of my saved notes in Markdown
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+---
 
-### Making a Progressive Web App
+#### User dasboard page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- as a REGISTERED USER
+- I want to logout of my account
+- So I can limit access to my account
 
-### Advanced Configuration
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### User dasboard page
 
-### Deployment
+- as a REGISTERED USER
+- I want to retrieve a unique url that lists where all my public notes are displayed
+- So I can share the url with collaborators
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+---
 
-### `yarn build` fails to minify
+#### User profile page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- as a REGISTERED USER
+- I want to view my profile
+- So I can edit my password
+
+---
+
+#### User new note page
+
+- as a REGISTERED USER
+- I want to create a new note
+- So I can edit and save the note in Mardown while previewing the output HTML
+
+---
+
+#### User edit note page
+
+- as a REGISTERED USER
+- I want to view an existing note
+- So I can edit and save the note in Mardown while previewing the output HTML
+
+---
+
+#### User new & edit note page
+
+- as a REGISTERED USER
+- I want to make a note public
+- So anyone can view a note from a unique URL in a web browser
+
+### Wireframes???
+
+Landing Page  
+:-------------------------: 
+![Landing Page](./github-images/wireframes/landing-page-wireframe3.png)
+
+Sign up Page
+:-------------------------:
+![Sign up Page](./github-images/wireframes/signup-page-wireframe.png)
+
+Login Page  
+:-------------------------:
+![Login Page](./github-images/wireframes/login-page-wireframe.png)
+
+User public Page  
+:-------------------------: 
+![User public Page](./github-images/wireframes/user-public-page-wireframe.png)
+
+User dashboard `new doc` Page
+:-------------------------: 
+![User dashboard `new doc` Page](./github-images/wireframes/dashboard-new-page-wireframe.png)
+
+User dashboard `notes list` Page | Mobile
+------ | ------  
+![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-list-page-wireframe_mobile.png)
+
+User dashboard `editor` Page | Mobile Editor | Mobile Preview
+------ | ------ | ------  
+![User dashboard `editor` Page](./github-images/wireframes/dashboard-editor-wireframe.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-editor-wireframe_mobile.png) | ![User dashboard `notes list` Page](./github-images/wireframes/dashboard-preview-wireframe_mobile.png)
+
+User dashboard `export dropdown` Page  
+:-------------------------: 
+![User dashboard `export dropdown` Page](./github-images/wireframes/dashboard-export-page-wireframe.png)
+
+User dashboard `user preferences dropdown` Page  
+:-------------------------: 
+![User dashboard `user preferences dropdown` Page](./github-images/wireframes/dashboard-profile-logout-page-wireframe.png)
+
+
+## Screenshots (later)
+
+Landing/Login Page
+:-------------------------:
+![Landing Page](/github-images/screenshots/login-page-screenshot.png)
+Landing/Register Page
+![Register Page](/github-images/screenshots/login-page-screenshot.png)
+
+## Functionality???
+
+The app's functionality includes:
+
+- Every User has the ability to create an account
+
+## Technology (done)
+
+- Front-End: HTML5, CSS3, JavaScript ES6, React
+- Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
+- Development Environment: Heroku, DBeaver
+
+## Front-end Structure - React Components Map (later)
+
+- **Index.js** (stateless)
+  - **App.js** (stateful)
+    - **LandingPage.js** (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the **App.js**
+      - **Login.js** (stateful) -
+      - **Register.js** (stateful) -
+    - **Navbar.js** (stateless) -
+
+## Back-end Structure - Business Objects (later)
+
+- Users (database table)
+  - id (auto-generated)
+  - username (email validation)
+  - password (at least 8 chars, at least one alpha and a special character validation)
+
+## API Documentation (later)
+
+API Documentation details:
+
+- get all users
+
+## Responsive (done)
+
+App is built to be usable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
+
+## Development Roadmap (later)
+
+This is v1.0 of the app, but future enhancements are expected to include:
+
+- add more functionality
+
+## How to run it (done)
+
+Use command line to navigate into the project folder and run the following in terminal
+
+### Local Node scripts
+
+- To install the node project ===> npm install
+- To migrate the database ===> npm run migrate -- 1
+- To run Node server (on port 8000) ===> npm run dev
+- To run tests ===> npm run test
+
+### Local React scripts
+
+- To install the react project ===> npm install
+- To run react (on port 3000) ===> npm start
+- To run tests ===> npm run test
