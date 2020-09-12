@@ -8,11 +8,12 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const { notes } = this.props;
     return (
       <div className="main__dashboard">
         <h1>Latest Notes</h1>
         <div className="main__dashboard--inner">
-          {this.props.notes.map((note, idx) => {
+          {notes.map((note, idx) => {
               return (
                 <div 
                   className="main__dashboard--card"

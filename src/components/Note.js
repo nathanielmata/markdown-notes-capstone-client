@@ -33,7 +33,7 @@ class Note extends React.Component {
   };
 
   handleLoading = () => {
-    const note = this.props.note;
+    const { note } = this.props;
     this.setState({
       title: note.title,
       content: note.content,
@@ -65,6 +65,7 @@ class Note extends React.Component {
   };
 
   render() {
+    const { title, content, markup } = this.state;
     return (
       <div className="editor__wrapper">
         <div className="editor__above">
@@ -72,7 +73,7 @@ class Note extends React.Component {
             <h5 className="editor__title--label label">TITLE</h5>
             <input
               className="editor__title--input"
-              value={this.state.title}
+              value={title}
               onChange={(e) => this.handleTitleChange(e)}
               type="text" />
           </div>
@@ -86,7 +87,7 @@ class Note extends React.Component {
           <div className="editor--inner">
             <textarea
               className="editor--textarea"
-              value={this.state.content}
+              value={content}
               onChange={(e) => this.handleEditorChange(e)}
             ></textarea>
           </div>
@@ -95,7 +96,7 @@ class Note extends React.Component {
         <div id="preview" className="preview--split main--split">
           <div
             className="preview--inner"
-            dangerouslySetInnerHTML={{ __html: this.state.markup }}
+            dangerouslySetInnerHTML={{ __html: markup }}
           />
         </div>
       </div>
