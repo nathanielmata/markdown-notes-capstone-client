@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SvgIcon = (props) => (
   <svg 
@@ -14,6 +15,10 @@ const SvgIcon = (props) => (
     {props.children}
   </svg>
 );
+
+SvgIcon.propTypes = {
+  classVariant: PropTypes.arrayOf(PropTypes.string)
+};
 
 const SidebarOpenIcon = ({classVariant}) => (
   <SvgIcon 
