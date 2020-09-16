@@ -1,10 +1,10 @@
 :root {
-  --main-text: #FFFFFF;
+  --main-text: #ffffff;
   --main-dark: #282c34;
   --main-medium: #464646;
   --main-btn: rgb(239, 239, 239);
   --main-hover: rgb(225, 225, 225);
-  --main-menu-bg: #C4C4C4;
+  --main-menu-bg: #c4c4c4;
   --main-label: #8b898a;
 }
 
@@ -57,7 +57,6 @@ a.button:hover {
   text-decoration: none;
   background-color: var(--main-hover);
 }
-
 
 nav ul {
   padding: 0;
@@ -355,7 +354,7 @@ label,
   display: inline-block;
 }
 
-.main__profile--details{
+.main__profile--details {
   display: inline-block;
 }
 
@@ -451,6 +450,17 @@ label,
 
 .preview--split {
   background-color: transparent;
+}
+
+.preview--split ul {
+  display: block;
+  list-style: disc;
+}
+
+.preview--split li {
+  display: list-item;
+  list-style: disc;
+  text-align: left;
 }
 
 .preview--inner {

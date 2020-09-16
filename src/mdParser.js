@@ -20,8 +20,20 @@ const mdParser = (() => {
         str = `<pre><code>${trimStr}</code></pre>`;
       }
       return str;
+    },
+    ulMatch: (str, prev, next) => {
+      const regex = /^\*\s.+/g;
+      const match = str.match(regex);
+      if (match) {
+        let out = String();
+        out += !prev || !prev.match(regex) ? `<ul>` : "";
+        out += `<li>${match[0].replace(/^\*\s/g, "")}</li>`;
+        out += !next || !next.match(regex) ? `</ul>` : "";
+        str = out;
+      }
+      return str;
     }
-  }
+  };
 })();
 
 export default mdParser;

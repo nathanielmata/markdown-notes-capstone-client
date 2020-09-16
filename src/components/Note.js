@@ -1,9 +1,9 @@
-import React from 'react';
-import MarkdownNotesContext from '../MarkdownNotesContext';
-import { LockIcon, MarkdownIcon, FileIcon } from './Icons';
+import React from "react";
+import MarkdownNotesContext from "../MarkdownNotesContext";
+import { LockIcon, MarkdownIcon, FileIcon } from "./Icons";
 import mdParser from "../mdParser";
 
-class Note extends React.Component { 
+class Note extends React.Component {
   static contextType = MarkdownNotesContext;
 
   state = {
@@ -17,16 +17,17 @@ class Note extends React.Component {
   };
 
   componentDidUpdate = (prevProps) => {
-    if(this.props.note.id !== prevProps.note.id ) { 
+    if (this.props.note.id !== prevProps.note.id) {
       this.handleMarkup(this.handleLoading());
-    };
+    }
   };
 
   handleParsing = (content) => {
     const arr = content.split("\n");
-    return arr.map((str) => {
+    return arr.map((str, idx) => {
       let match = mdParser.headingMatch(str);
       match = mdParser.codeBlockMatch(match);
+      match = mdParser.ulMatch(match, arr[idx - 1], arr[idx + 1]);
 
       return match;
     });
@@ -39,7 +40,7 @@ class Note extends React.Component {
       content: note.content,
     });
     return note.content;
-  }
+  };
 
   handleMarkup = (content) => {
     const markup = this.handleParsing(content).join("");
@@ -51,10 +52,9 @@ class Note extends React.Component {
   handleTitleChange = (e) => {
     const title = e.target.value;
     this.setState({
-      title
+      title,
     });
-
-  }
+  };
 
   handleEditorChange = (e) => {
     const content = e.target.value;
@@ -75,12 +75,19 @@ class Note extends React.Component {
               className="editor__title--input"
               value={title}
               onChange={(e) => this.handleTitleChange(e)}
-              type="text" />
+              type="text"
+            />
           </div>
           <div className="editor__buttons">
-            <button><LockIcon /></button>
-            <button><MarkdownIcon /></button>
-            <button><FileIcon /></button>
+            <button>
+              <LockIcon />
+            </button>
+            <button>
+              <MarkdownIcon />
+            </button>
+            <button>
+              <FileIcon />
+            </button>
           </div>
         </div>
         <div id="editor" className="editor--split main--split">
@@ -92,7 +99,7 @@ class Note extends React.Component {
             ></textarea>
           </div>
         </div>
-      
+
         <div id="preview" className="preview--split main--split">
           <div
             className="preview--inner"
@@ -100,7 +107,8 @@ class Note extends React.Component {
           />
         </div>
       </div>
-    )};
+    );
   }
+}
 
 export default Note;
