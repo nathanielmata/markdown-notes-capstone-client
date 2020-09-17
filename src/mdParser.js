@@ -22,17 +22,51 @@ const mdParser = (() => {
       return str;
     },
     ulMatch: (str, prev, next) => {
-      const regex = /^\*\s.+/g;
+      const regex = /^[\-\*]\s.+/g;
       const match = str.match(regex);
       if (match) {
         let out = String();
         out += !prev || !prev.match(regex) ? `<ul>` : "";
-        out += `<li>${match[0].replace(/^\*\s/g, "")}</li>`;
+        out += `<li>${match[0].replace(/^[\-\*]\s/g, "")}</li>`;
         out += !next || !next.match(regex) ? `</ul>` : "";
         str = out;
       }
       return str;
-    }
+    },
+    emMatch: (str) => {
+      let regex = /[\_\*][^\_\*]+[\_\*]\n*/g;
+      match = str.match(regex);
+      if (match) {
+        let out = String();
+        const arr = str.split(regex);
+
+        match.forEach((m, idx) => {
+          out += arr[idx] + `<em>${m.replace(/[\_\*]/g, "")}</em>`;
+          out += idx === match.length - 1 ? arr[idx + 1] : "";
+        });
+
+        str = out;
+        console.log(str);
+      }
+
+      regex = /[\_{2}\*{2}][^.]+[\_{2}\*{2}]\n*/g;
+      match = str.match(regex);
+      console.log(match);
+      if (match) {
+        let out = String();
+        const arr = str.split(regex);
+
+        match.forEach((m, idx) => {
+          out += arr[idx] + `<strong>${m.replace(/[\_{2}\*{2}]/g, "")}</strong>`;
+          out += idx === match.length - 1 ? arr[idx + 1] : "";
+        });
+
+        str = out;
+        console.log(str);
+      }
+
+      return str;
+    },
   };
 })();
 
