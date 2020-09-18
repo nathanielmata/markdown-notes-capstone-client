@@ -104,4 +104,4 @@ class Note extends React.Component {
   }
 }
 
-export default Note;
+export default React.memo(Note);
