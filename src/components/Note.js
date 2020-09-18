@@ -23,15 +23,7 @@ class Note extends React.Component {
   };
 
   handleParsing = (content) => {
-    const arr = content.split("\n");
-    return arr.map((str, idx) => {
-      let match = mdParser.headingMatch(str);
-      match = mdParser.codeBlockMatch(match);
-      match = mdParser.ulMatch(match, arr[idx - 1], arr[idx + 1]);
-      match = mdParser.emMatch(match);
-
-      return match;
-    });
+    return mdParser.parse(content);
   };
 
   handleLoading = () => {

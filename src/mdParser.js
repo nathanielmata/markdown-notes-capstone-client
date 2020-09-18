@@ -2,6 +2,16 @@ const mdParser = (() => {
   let match;
 
   return {
+    parse: (content) => {
+      const arr = content.split("\n");
+      return arr.map((str, idx) => {
+        let mdMatch = mdParser.headingMatch(str);
+        mdMatch = mdParser.codeBlockMatch(mdMatch);
+        mdMatch = mdParser.ulMatch(mdMatch, arr[idx - 1], arr[idx + 1]);
+        mdMatch = mdParser.emMatch(mdMatch);
+        return mdMatch;
+      });
+    },
     headingMatch: (str) => {
       match = str.match(/\n*#+\s+.+\n*/g);
       if (match) {
@@ -35,6 +45,7 @@ const mdParser = (() => {
     },
     emMatch: (str) => {
       let regex = /[\_\*][^\_\*]+[\_\*]\n*/g;
+
       match = str.match(regex);
       if (match) {
         let out = String();
