@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
                     <a href={`/note/${note.id}`}>
                       <div className="main__dashboard--card-name">{note.title}</div>
                       <div className="main__dashboard--card-date">
-                        Edited {this.formatDate(note.updated_at)}
+                        Edited {this.formatDate(note.updated_at ?? note.created_at)}
                       </div>
                     </a>
                 </div>
