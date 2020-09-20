@@ -1,10 +1,8 @@
 import React from "react";
-import MarkdownNotesContext from "../MarkdownNotesContext";
 import { LockIcon, MarkdownIcon, FileIcon } from "./Icons";
 import mdParser from "../mdParser";
 
 class Note extends React.Component {
-  static contextType = MarkdownNotesContext;
 
   state = {
     title: "",
@@ -104,4 +102,4 @@ class Note extends React.Component {
   }
 }
 
-export default React.memo(Note);
+export default Note;

@@ -1,18 +1,12 @@
-import React from 'react';
-import Note from './Note';
+import React from "react";
+import Note from "./Note";
 
-class NoteCreate extends React.Component { 
-  getNewContent() {
-    // later we can get and set default content when creating a new note here
-    return {
-      title: "Untitled",
-      content: "# Create a new note",
-    };
-  }
-
-  render() {
-    return <Note note={this.getNewContent()} />
-  }
-};
-
+const NoteCreate = () => <Note note={newNote()} />;
 export default NoteCreate;
+
+const newNote = () => {
+  return {
+    title: "Untitled",
+    content: "# Create a new note",
+  };
+};
