@@ -1,10 +1,46 @@
-# Markdown Notes Capstone (done)
+# Markdown Notes Capstone 
 
 'Markdown Notes' is a note taking app that lets you create notes in a markdown editor and preview the html output, then save the note to your user account where you can tag the note as public or private.
 
-## Working Prototype (later)
+Context: I'm always taking notes, but my notes are a mess (show my messy notes). I decided to use Markdown to write my notes for visual organization.
 
-You can access a working prototype of the React app here: https://your-app-client.herokuapp.com/ and Node app here: https://your-app-server.herokuapp.com/
+Wireframes/Screenshots
+
+Features: I created the Markdown Notes app to organize notes
+- write
+- preview
+- save
+- edit
+- search(pending)
+- tag(pending)
+
+Tech Stack:
+- Front-End: HTML5, CSS3, JavaScript ES6, React
+- Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
+- Development Environment: Heroku, Vercel
+
+Demo:
+- https://markdown-notes-capstone-client.vercel.app
+
+Lessons Learned: 
+- it can be hard to deal with multiple contexts in a single component
+
+What would I do differently:
+- use uuid for note routing ids rather than incremented integer
+- consolidate buttons in editor into a dropdown
+- break up list data loading(lazy loading until user scrolls)
+
+Additional features:
+- search
+- tagging notes
+  - tags table in database
+- indicators and transitions for users
+- user public page for notes marked public
+- export .md or .html file
+
+## Working Prototype
+
+You can access a working prototype of the React app here: https://markdown-notes-capstone-client.vercel.app and Node api app here: https://infinite-sea-85899.herokuapp.com/api
 
 ## User Stories???
 
@@ -164,11 +200,11 @@ The app's functionality includes:
 
 - Every User has the ability to create an account
 
-## Technology (done)
+## Technology
 
 - Front-End: HTML5, CSS3, JavaScript ES6, React
 - Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
-- Development Environment: Heroku, DBeaver
+- Development Environment: Heroku, Vercel
 
 ## Front-end Structure - React Components Map (later)
 
