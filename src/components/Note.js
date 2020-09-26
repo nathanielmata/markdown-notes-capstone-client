@@ -1,7 +1,7 @@
 import React from "react";
 import NoteContext from "../context/NoteContext";
 import NoteApiService from "../services/note-api-service";
-import { LockIcon, SaveIcon, FileIcon } from "./Icons";
+import { LockIcon, SaveIcon } from "./Icons";
 import mdParser from "../mdParser";
 
 class Note extends React.Component {
@@ -120,10 +120,10 @@ class Note extends React.Component {
             {/* <button>
               <MarkdownIcon />
             </button> */}
-            <button>
+            {/* <button>
               <FileIcon />
               <span className="tooltip">Export</span>
-            </button>
+            </button> */}
           </div>
         </div>
         <div id="editor" className="editor--split main--split">
