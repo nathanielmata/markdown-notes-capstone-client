@@ -4,7 +4,7 @@ import { SidebarCloseIcon } from './Icons';
 import { LockIcon, UnlockIcon } from './Icons';
 
 const Sidebar = (props) => (
-  <nav className="nav__sidebar">
+  <nav className="nav__sidebar" style={{height: sidebarHeight()}}>
 
     <div className="nav__sidebar--close" onClick={() => props.closeMenus()}>
       <SidebarCloseIcon />
@@ -25,7 +25,7 @@ const Sidebar = (props) => (
                   ? <LockIcon className="nav__sidebar--icons"/>
                   : <UnlockIcon className="nav__sidebar--icons" />}
               </>
-              <span>
+              <span className="nav__sidebar--list-title">
                 {note.title.length > 24
                   ? note.title.slice(0,23) + "..."
                   : note.title}
@@ -41,3 +41,9 @@ const Sidebar = (props) => (
 );
 
 export default Sidebar;
+
+const sidebarHeight = () => {
+  const height = document.getElementById("main__container").clientHeight;
+  return `${height + 87}px`;
+}
+
