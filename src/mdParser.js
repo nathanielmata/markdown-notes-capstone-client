@@ -44,8 +44,23 @@ const mdParser = (() => {
       return str;
     },
     emMatch: (str) => {
-      let regex = /[_*][^_*]+[_*]\n*/g;
+      let regex = /(__|\*\*)[^.]+(__|\*\*)\n*/g;
+      match = str.match(regex);
+      if (match) {
+        let out = String();
+        const arr = str.split(regex);
+        out += "<p>" + arr[0];
 
+        match.forEach((m, idx) => {
+          out += `<strong>${m.replace(/(_{2}|\*{2})([^_*]+)\1/g, "$2")}</strong>`;
+          out += idx === match.length - 1 ? arr[arr.length - 1] : "";
+        });
+
+        out += "</p>";
+        str = out;
+      }
+
+      regex = /[_*][^_*]+[_*]\n*/g;
       match = str.match(regex);
       if (match) {
         let out = String();
@@ -57,23 +72,6 @@ const mdParser = (() => {
         });
 
         str = out;
-        console.log(str);
-      }
-
-      regex = /[_{2}*{2}][^.]+[_{2}*{2}]\n*/g;
-      match = str.match(regex);
-      console.log(match);
-      if (match) {
-        let out = String();
-        const arr = str.split(regex);
-
-        match.forEach((m, idx) => {
-          out += arr[idx] + `<strong>${m.replace(/[_{2}*{2}]/g, "")}</strong>`;
-          out += idx === match.length - 1 ? arr[idx + 1] : "";
-        });
-
-        str = out;
-        console.log(str);
       }
 
       return str;
