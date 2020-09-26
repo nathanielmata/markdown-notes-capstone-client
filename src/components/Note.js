@@ -58,6 +58,13 @@ class Note extends React.Component {
     this.handleMarkup(content);
   };
 
+  // saveIndicator() {
+  //   let el = document.getElementById("editor__saved--alert");
+  //   for (let i = 0; i < 3; i++) {
+
+  //   }
+  // }
+
   updateContext = (note) => {
     this.context.setNote(note);
     this.props.history.push(`/note/${note.id}`);
@@ -99,6 +106,7 @@ class Note extends React.Component {
     return (
       <div className="editor__wrapper">
         <div className="editor__above">
+          <div id="editor__saved--alert" className="editor__saved--alert">...Saving</div>
           <div className="editor__title">
             <h5 className="editor__title--label label">TITLE</h5>
             <input

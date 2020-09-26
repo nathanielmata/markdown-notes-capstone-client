@@ -18,7 +18,7 @@ export default class LoginPage extends Component {
 
   render() {
     return (
-      <section className="LoginPage">
+      <section className="login">
         <h2>Login</h2>
         {TokenService.getAuthToken()
           ? this.props.history.push('/')
