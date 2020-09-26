@@ -1,6 +1,9 @@
-import React from 'react';
+import React from "react";
+import NoteListContext from "../context/NoteListContext";
 
 class Dashboard extends React.Component {
+  static contextType = NoteListContext;
+
   formatDate = (date) => {
     const ms = (Date.now() - Date.parse(date));
     const days = Math.floor(ms/1000/60/60/24);
@@ -8,7 +11,8 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { notes } = this.props;
+    const { notes } = this.context;
+    console.log(notes);
     return (
       <div className="main__dashboard">
         <h1>Latest Notes</h1>
