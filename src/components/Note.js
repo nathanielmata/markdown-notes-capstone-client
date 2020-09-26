@@ -103,6 +103,7 @@ class Note extends React.Component {
             <h5 className="editor__title--label label">TITLE</h5>
             <input
               className="editor__title--input"
+              title={title}
               value={title}
               onChange={(e) => this.handleTitleChange(e)}
               type="text"
