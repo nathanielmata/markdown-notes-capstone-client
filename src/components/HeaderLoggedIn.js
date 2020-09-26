@@ -76,7 +76,6 @@ class HeaderLoggedIn extends React.Component {
         </>
         <div className="header__user">
           <div className="header__user--inner" onClick={() => this.toggleMenu("user")}>
-            {/* <img className="header__user--img" src="/user-pic-greybox.jpg" alt={user.name + "'s user image"} /> */}
             <ProfileIcon classVariant="header__user--img"/>
             <span className="header__user--span">{user.name}</span>
           </div>
@@ -84,7 +83,6 @@ class HeaderLoggedIn extends React.Component {
             {menus.user &&
               <ul className="header__dropdown header__user--dropdown">
                 <li><Link to="/" onClick={() => this.closeMenus()}>Dashboard</Link></li>
-                <li><Link to={`/profile/${user.id}`} onClick={() => this.closeMenus()}>Profile</Link></li>
                 <li><Link to="/" onClick={() => this.handleLogout()}>Logout</Link></li>
               </ul>}
           </>
