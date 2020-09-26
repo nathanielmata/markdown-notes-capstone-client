@@ -1,110 +1,88 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import NoteCreate from './components/NoteCreate';
-import NoteUpdate from './components/NoteUpdate';
-import Dashboard from './components/Dashboard';
-import Profile from './components/Profile';
-import NotFound from './components/NotFound';
-import MarkdownNotesContext from './MarkdownNotesContext';
-import NoteApiService from './services/note-api-service';
-import USERS from './seeds/seeds.users';
+import { Switch, Route } from "react-router-dom";
+import NoteListContext from "./context/NoteListContext";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import LandingPage from "./routes/LandingPage";
+import Header from "./components/Header";
+import LoginPage from "./routes/LoginPage";
+import NoteCreate from "./components/NoteCreate";
+import NoteUpdate from "./components/NoteUpdate";
+import Dashboard from "./components/Dashboard";
+import NotFound from "./components/NotFound";
+import NoteApiService from "./services/note-api-service";
+import USERS from "./seeds/seeds.users";
 
-import "./App.css"; 
+import "./App.css";
 
 class App extends React.Component {
-  state = {
-    notes: [],
-    menus: {
-      sidebar: false,
-      user: false,
-    }
-  };
+  static contextType = NoteListContext;
 
   componentDidMount() {
+    this.getNotes();
+  }
+
+  updateNote = (noteUpdate) => {
+    const notes = this.context.notes.map(note => {
+      return note.id === noteUpdate.id
+        ? noteUpdate
+        : note
+    });
+    this.context.setNotes(notes);
+  }
+
+  addNote = (newNote) => {
+    const notes = this.context.getNotes();
+    this.context.setNotes([...notes, newNote]);
+  }
+
+  getNotes = () => {
+    this.context.clearError();
     NoteApiService.getNotes()
-      .then(notes => {
-        this.setState({ notes })
-      });
-    document.addEventListener("keydown", this.escKeyPress, false);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.escKeyPress, false);
-  }
-
-  escKeyPress = ({key}) => {
-    if (key === "Escape") {
-      this.closeMenus();
-    }
-  }
-
-  closeMenus = () => {
-    this.setState((state) => {
-      // close menus when a navigation link is clicked
-      const menus = {};
-      Object.keys(state.menus).forEach((k) => {
-        menus[k] = false;
-      })
-      return {menus};
-    });
-  }
-
-  toggleHiddenMenu = (name) => {
-    this.setState((state) => {
-      // toggle the clicked menu and close other menus we are tracking with state
-      const menus = {};
-      Object.keys(state.menus).forEach((k) => {
-        name === k
-          ? menus[k] = !this.state.menus[k]
-          : menus[k] = false;
-      })
-      return {menus: {...menus}};
-    });
-  }
-
-  getUser = (id) => {
-    const user = USERS.find(user => user.id === +id);
-    return user ? user : "notfound";
+      .then((notes) => this.context.setNotes(notes))
+      .catch((err) => this.context.setError(err));
   }
 
   render() {
-    const { notes } = this.state;
-    const contextValue = {
-      toggleHiddenMenu: this.toggleHiddenMenu,
-      getUser: this.getUser,
-    };
-
     return (
       <div className="App">
-        <BrowserRouter>
-          <MarkdownNotesContext.Provider value={contextValue}>
-            <Header 
-              menus={{ ...this.state.menus }}
-              closeMenus={this.closeMenus}
-              toggleHiddenMenu={this.toggleHiddenMenu}
-              user={USERS[2]} >
-                { this.state.menus.sidebar &&
-                  <Sidebar 
-                    notes={notes}
-                    closeMenus={this.closeMenus} />
-                }
-            </Header>
-            <main className="main--container">   
-              <Switch>
-                <Route exact path="/" render={(props) => 
-                  <Dashboard notes={notes} {...props} />
-                }/>
-                <Route exact path="/profile/:id" component={Profile}/>
-                <Route exact path="/note/new" component={NoteCreate} />
-                <Route path="/note/:id" component={NoteUpdate}/>
-                <Route component={NotFound} />
-              </Switch>  
-            </main>
-            {/* <footer>Contact details</footer> */}
-          </MarkdownNotesContext.Provider>
-        </BrowserRouter>
+        <Header user={USERS[2]} />
+        <main id="main__container" className="main__container">
+          <Switch>
+
+            <Route exact path="/" render={(props) => 
+              <PublicRoute 
+                {...props}
+                component={LandingPage} />
+            }/>
+
+            <Route path="/login" component={LoginPage} />
+
+            <Route exact path="/dashboard" render={(props) => 
+              <PrivateRoute
+                {...props}
+                component={Dashboard} />
+            }/>
+            
+            <Route exact path="/note/new" render={(props) => 
+              <PrivateRoute
+                {...props}
+                addNote={this.addNote}
+                component={NoteCreate} />
+            }/>
+
+            <Route path="/note/:id" render={(props) => 
+              <PrivateRoute
+                {...props}
+                updateNote={this.updateNote}
+                component={NoteUpdate} />
+            }/>
+
+            <Route component={NotFound} />
+
+          </Switch>
+        </main>
+        {/* <footer>Contact details</footer> */}
       </div>
     );
   }

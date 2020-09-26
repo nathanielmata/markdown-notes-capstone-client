@@ -1,12 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import { NoteListProvider } from "./context/NoteListContext";
+import { NoteProvider } from "./context/NoteContext";
+import "./index.css";
+import App from "./App";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <BrowserRouter>
+    <NoteListProvider>
+      <NoteProvider>
+        <App />
+      </NoteProvider>
+    </NoteListProvider>
+  </BrowserRouter>,
+  document.getElementById("root")
 );
 
 // // If you want your app to work offline and load faster, you can change
