@@ -67,6 +67,32 @@ const LockIcon = ({classVariant}) => (
   </SvgIcon>
 );
 
+const ProfileIcon = ({classVariant}) => (
+  <SvgIcon 
+    viewBox="0 0 56 56"
+    ariaLabel="Profile Image"
+    title="Profile Image"
+    classVariant={[classVariant]}>
+    <path fill="#000000" d="M28,43.3c-8.5,0-17.5-2.8-17.5-7.9c0-5.1,9-7.9,17.5-7.9s17.5,2.8,17.5,7.9C45.5,40.6,36.5,43.3,28,43.3z M28,30.5
+	c-8.9,0-14.5,2.9-14.5,4.9s5.6,4.9,14.5,4.9s14.5-2.9,14.5-4.9S36.9,30.5,28,30.5z"/>
+    <path fill="#000000" d="M28,10.5c-4.5,0-8,3.6-8,8s3.5,8.1,8,8.1s8-3.6,8-8S32.5,10.5,28,10.5z M28,23.7c-2.8,0-5.2-2.3-5.2-5.2
+	c0-2.8,2.3-5.2,5.2-5.2c2.8,0,5.2,2.3,5.2,5.2S30.8,23.7,28,23.7z"/>
+  </SvgIcon>
+);
+
+
+const SaveIcon = ({classVariant}) => (
+  <SvgIcon 
+    viewBox="0 0 22 22"
+    ariaLabel="Save Icon"
+    title="Save Icon"
+    classVariant={["editor__buttons--svg", classVariant]}>
+    <path fill="#000000" d="M18.5,0H0v22h22V3.5L18.5,0z M6.9,1.7h8.2v5.2H6.9V1.7z M16.5,20.3H5.5v-8.8h11.1V20.3z M20.3,20.3h-2.4V10.1H4.1v10.2H1.7
+		V1.7h3.8v6.6h10.9V1.7h1.4l2.5,2.5V20.3z"/>
+    <path fill="#000000" d="M10.9,5.7h3.7V2h-3.7V5.7z M11.6,2.7h2.3V5h-2.3V2.7z"/>
+  </SvgIcon>
+);
+
 const MarkdownIcon = ({classVariant}) => (
   <SvgIcon 
     viewBox="0 0 50 24"
@@ -109,6 +135,8 @@ export {
   SidebarCloseIcon,
   LockIcon,
   UnlockIcon,
+  ProfileIcon,
+  SaveIcon,
   MarkdownIcon,
   FileIcon,
   UserPicPlaceholderIcon,
