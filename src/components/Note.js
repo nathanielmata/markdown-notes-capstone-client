@@ -1,8 +1,11 @@
 import React from "react";
-import { LockIcon, MarkdownIcon, FileIcon } from "./Icons";
+import NoteContext from "../context/NoteContext";
+import NoteApiService from "../services/note-api-service";
+import { LockIcon, SaveIcon, FileIcon } from "./Icons";
 import mdParser from "../mdParser";
 
 class Note extends React.Component {
+  static contextType = NoteContext;
 
   state = {
     title: "",
@@ -55,6 +58,42 @@ class Note extends React.Component {
     this.handleMarkup(content);
   };
 
+  updateContext = (note) => {
+    this.context.setNote(note);
+    this.props.history.push(`/note/${note.id}`);
+  }
+
+  patchNote = (id, title, content) => {
+    NoteApiService.patchNote(id, title, content)
+    .then((note) => {
+      this.updateContext(note);
+      this.props.updateNote(note);
+    })
+    .catch(this.context.setError);
+  }
+
+  postNote = (title, content) => {
+    NoteApiService.postNote(title, content)
+    .then((note) => {
+      this.updateContext(note);
+      this.props.addNote(note);
+    })
+    .catch(this.context.setError);
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const id = this.props.match.params.id ?? null;
+    const { title, content } = this.state;
+
+    if (id) {
+      this.patchNote(id, title, content)
+    } else {
+      this.postNote(title, content)
+    }
+  }
+
   render() {
     const { title, content, markup } = this.state;
     return (
@@ -70,14 +109,20 @@ class Note extends React.Component {
             />
           </div>
           <div className="editor__buttons">
+            <button onClick={(e) => this.handleSubmit(e)}>
+              <SaveIcon />
+              <span className="tooltip">Save</span>
+            </button>
             <button>
               <LockIcon />
+              <span className="tooltip">Visibility</span>
             </button>
-            <button>
+            {/* <button>
               <MarkdownIcon />
-            </button>
+            </button> */}
             <button>
               <FileIcon />
+              <span className="tooltip">Export</span>
             </button>
           </div>
         </div>

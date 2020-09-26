@@ -1,17 +1,11 @@
-import React from 'react';
-import NoteApiService from '../services/note-api-service';
-import Note from './Note';
+import React from "react";
+import NoteContext from "../context/NoteContext";
+import NoteApiService from "../services/note-api-service";
+import TokenService from "../services/token-service";
+import Note from "./Note";
 
 class NoteUpdate extends React.Component {
-  
-  state = {
-    err: null,
-    note: {
-      title: "",
-      content: "",
-      published: "",
-    },
-  };
+  static contextType = NoteContext;
 
   componentDidMount() {
     this.getNote();
@@ -23,28 +17,35 @@ class NoteUpdate extends React.Component {
     }
   };
 
-  getNote() {
-    const id = this.props.match.params.id;
-    NoteApiService.getNote(id)
-      .then((note) => {
-        this.setState({
-          err: null,
-          note,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState({ err });
-      });
+  componentWillUnmount() {
+    this.context.clearNote();
   }
+
+  getNote = () => {
+    const id = this.props.match.params.id;
+    this.context.clearError();
+
+    NoteApiService.getNote(id)
+      .then((note) => this.context.setNote(note))
+      .catch((err) => this.context.setError(err));
+  };
 
   render() {
-    if (this.state.err !== null) {
-      return <h2>Note not found.</h2>;
+    const { error, note } = this.context;
+    if (error) {
+      return (error === `Note doesn't exist`)
+        ? <h2>Note not found.</h2>
+        : <h2>There was an error</h2>
     }
-
-    return <Note note={this.state.note} />;
+    return (
+      <>
+      {TokenService.getAuthToken()
+        ? <Note note={note} {...this.props} />
+        : this.props.history.push('/login')
+      }
+      </>
+    )
   }
-};
+}
 
 export default NoteUpdate;
