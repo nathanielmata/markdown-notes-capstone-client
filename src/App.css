@@ -90,6 +90,7 @@ label,
   flex-direction: row;
   align-items: left;
   justify-content: left;
+  align-items: center;
   /* font-size: calc(10px + 2vmin); */
   color: white;
   z-index: 10;
@@ -168,6 +169,8 @@ label,
   width: 28px;
   height: 28px;
   border-radius: 14px;
+  background-color: var(--main-btn);
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 .header__user--svg {
   position: relative;
@@ -217,24 +220,31 @@ label,
   width: 320px;
   height: auto;
   text-align: center;
+  /* overflow: hidden; */
   /* visibility: hidden; */
   /* opacity: 0; */
   /* transition: visibility 300ms linear 300ms, opacity 300ms; */
 }
 
-.nav__sidebar--close {
+.nav__sidebar > div {
+  display: block;
+  height: auto;
+}
+
+.nav__sidebar > .nav__sidebar--close {
   position: absolute;
   margin-top: -48px;
   margin-right: 12px;
   right: 0px;
   width: 20px;
-  height: auto;
+  height: 20px;
   cursor: pointer;
+  display: inline-block;
 }
 
 .nav__sidebar--search {
   border-bottom: 1px solid rgba(0, 0, 0.1);
-  margin: 28px auto 0;
+  margin: 30px auto 0;
   padding-bottom: 30px;
   width: 100%;
   text-align: center;
@@ -244,8 +254,14 @@ label,
   height: 28px;
 }
 
-.nav__sidebar--list {
+.nav__sidebar > .nav__sidebar--list {
+  height: calc(100% - 100px);
   width: 100%;
+  overflow: scroll;
+}
+
+.nav__sidebar--list-title {
+  margin-left: 14px;
 }
 
 .nav__sidebar ul,
@@ -254,6 +270,7 @@ label,
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: auto;
 }
 
 .nav__sidebar li {
@@ -262,10 +279,11 @@ label,
 
 .nav__sidebar li > a {
   width: 100%;
-  padding: 16px 16px 16px 36px;
+  padding: 16px 16px 16px 28px;
   display: block;
   color: var(--main-dark, black);
   text-decoration: none;
+  text-align: left;
 }
 
 .nav__sidebar li > a:hover {
@@ -279,9 +297,9 @@ label,
   left: 0;
 }
 
-.main--container {
+.main__container {
   position: relative;
-  height: 100%;
+  height: calc(100% - 162px);
 }
 
 .main__dashboard {
@@ -392,10 +410,33 @@ label,
 
 .editor__buttons > button,
 .editor__buttons > .button {
+  position: relative;
   padding: 8px 0;
   margin-right: 28px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   min-width: 40px;
+}
+
+.tooltip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 4px 10px;
+  border: 1px solid var(--main-dark);
+  background-color: #FFFFFF;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-out;
+}
+
+.editor__buttons > button:hover .tooltip {
+  display: block;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  visibility: visible;
+  opacity: 1;
 }
 
 .editor__buttons--svg {
@@ -469,4 +510,5 @@ label,
   padding: 20px;
   height: 100%;
   overflow-wrap: break-word;
+  overflow: scroll;
 }
