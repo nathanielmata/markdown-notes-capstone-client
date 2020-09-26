@@ -1,5 +1,5 @@
 import React from 'react';
-import MarkdownNotesContext from '../MarkdownNotesContext';
+import MarkdownNotesContext from '../context/NoteContext';
 
 class Profile extends React.Component {
   static contextType = MarkdownNotesContext;
@@ -31,7 +31,9 @@ class Profile extends React.Component {
 
   render() {
     const id = this.props.match.params.id;
-    const user = this.context.getUser(id);
+    // ::TODO::
+    // need to pass a user context her
+    // const user = this.context.getUser(id);
     return (
       <div className="main__profile">
         <div className="main__profile--inner">
