@@ -43,7 +43,7 @@ const Sidebar = (props) => (
 export default Sidebar;
 
 const sidebarHeight = () => {
-  const height = document.getElementById("main__container").clientHeight;
-  return `${height + 87}px`;
+  const height = document.getElementById("main__container").offsetHeight;;
+  return `${height}px`;
 }
 

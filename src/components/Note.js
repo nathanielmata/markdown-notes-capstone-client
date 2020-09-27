@@ -135,21 +135,23 @@ class Note extends React.Component {
             </button> */}
           </div>
         </div>
-        <div id="editor" className="editor--split main--split">
-          <div className="editor--inner">
-            <textarea
-              className="editor--textarea"
-              value={content}
-              onChange={(e) => this.handleEditorChange(e)}
-            ></textarea>
+        <div className="editor__inner">
+          <div id="editor" className="editor--split main--split">
+            <div className="editor--inner">
+              <textarea
+                className="editor--textarea"
+                value={content}
+                onChange={(e) => this.handleEditorChange(e)}
+              ></textarea>
+            </div>
           </div>
-        </div>
 
-        <div id="preview" className="preview--split main--split">
-          <div
-            className="preview--inner"
-            dangerouslySetInnerHTML={{ __html: markup }}
-          />
+          <div id="preview" className="preview--split main--split">
+            <div
+              className="preview--inner"
+              dangerouslySetInnerHTML={{ __html: markup }}
+            />
+          </div>
         </div>
       </div>
     );
