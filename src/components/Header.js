@@ -1,23 +1,27 @@
 import React from "react";
 import NoteListContext from "../context/NoteListContext";
+import UserContext from "../context/UserContext";
+import TokenService from "../services/token-service";
 import HeaderLoggedIn from "./HeaderLoggedIn";
 import HeaderNotLoggedIn from "./HeaderNotLoggedIn";
-import TokenService from "../services/token-service";
 
 export default class Header extends React.Component {
-  static contextType = NoteListContext;
-
   render() {
-    const { user } = this.props;
-    const { notes } = this.context;
-
     return (
-      <header className="header">
-        {TokenService.hasAuthToken()
-          ? <HeaderLoggedIn user={user} notes={notes} />
-          : <HeaderNotLoggedIn />
-        }
-      </header>
+      <UserContext.Consumer>
+        {userCtx => (
+          <NoteListContext.Consumer>
+            {notesCtx => (
+              <header className="header">
+                {TokenService.hasAuthToken()
+                  ? <HeaderLoggedIn notesCtx={notesCtx} userCtx={userCtx} />
+                  : <HeaderNotLoggedIn />
+                }
+              </header>
+            )}
+          </NoteListContext.Consumer>
+        )}
+      </UserContext.Consumer>
     );
   }
 }

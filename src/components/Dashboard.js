@@ -7,12 +7,11 @@ class Dashboard extends React.Component {
   
   render() {
     const { notes } = this.context;
-    console.log(notes);
     return (
       <div className="main__dashboard">
         <h1>Latest Notes</h1>
         <div className="main__dashboard--inner">
-          {notes.reverse().map((note, idx) => {
+          {notes.map((note, idx) => {
             return (
               <div key={idx} className="main__dashboard--card">
                 <a href={`/note/${note.id}`}>

@@ -10,17 +10,12 @@ import NoteCreate from "./components/NoteCreate";
 import NoteUpdate from "./components/NoteUpdate";
 import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
-import NoteApiService from "./services/note-api-service";
-import USERS from "./seeds/seeds.users";
+
 
 import "./App.css";
 
 class App extends React.Component {
   static contextType = NoteListContext;
-
-  componentDidMount() {
-    this.getNotes();
-  }
 
   updateNote = (noteUpdate) => {
     const notes = this.context.notes.map(note => {
@@ -36,17 +31,10 @@ class App extends React.Component {
     this.context.setNotes([...notes, newNote]);
   }
 
-  getNotes = () => {
-    this.context.clearError();
-    NoteApiService.getNotes()
-      .then((notes) => this.context.setNotes(notes))
-      .catch((err) => this.context.setError(err));
-  }
-
   render() {
     return (
       <div className="App">
-        <Header user={USERS[2]} />
+        <Header />
         <main id="main__container" className="main__container">
           <Switch>
 

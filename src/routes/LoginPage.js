@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import LoginForm from "../components/LoginForm";
+import UserContext from "../context/UserContext";
 import TokenService from "../services/token-service";
 
 export default class LoginPage extends Component {
+  static contextType = UserContext;
+
   static defaultProps = {
-    location: {},
     history: {
       push: () => {},
     },
   };
 
-  handleLoginSuccess = () => {
-    const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/";
-    history.push(destination);
+  handleLoginSuccess = (token) => {
+    const user = TokenService.readJwtToken(token) ?? this.context.user;
+    this.context.setUser(user);
+    this.props.history.push("/dashboard");
   };
 
   render() {
@@ -23,7 +25,7 @@ export default class LoginPage extends Component {
           <h2>Sign in</h2>
           {TokenService.getAuthToken()
             ? this.props.history.push('/')
-            : <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+            : <LoginForm onLoginSuccess={(token) => this.handleLoginSuccess(token)} />
           }
         </div>
       </section>
