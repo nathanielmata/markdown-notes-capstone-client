@@ -88,6 +88,7 @@ label,
   flex-direction: row;
   margin: 0;
   padding: 1.5rem 28px;
+  min-height: 74px;
   background-color: var(--main-dark, black);
   justify-content: left;
   align-items: center;
