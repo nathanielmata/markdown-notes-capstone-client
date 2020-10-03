@@ -227,7 +227,7 @@ label,
 
 .nav__sidebar > .nav__sidebar--close {
   position: absolute;
-  margin-top: -40px;
+  margin-top: -48px;
   margin-right: 12px;
   right: 0px;
   width: 20px;
@@ -556,10 +556,10 @@ label,
 
 .landing button {
   font-size: 20px;
-  font-weight: 100;
+  font-weight: 300;
   background-color: var(--main-dark);
   color: var(--main-text);
-  padding: 10px 12px;
+  padding: 12px 16px;
 }
 
 .login {
