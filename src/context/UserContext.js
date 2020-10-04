@@ -23,7 +23,7 @@ export class UserProvider extends Component {
 
   componentDidMount() {
     const user = TokenService.readJwtToken() ?? emptyUser;
-    this.setState({ user });
+    this.setUser(user);
   }
 
   setError = (error) => {

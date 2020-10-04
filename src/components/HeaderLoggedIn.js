@@ -18,7 +18,6 @@ class HeaderLoggedIn extends React.Component {
   componentDidMount() {
     document.addEventListener("keydown", this.escKeyPress, false);
     this.getNotes(this.props.notesCtx);
-
   }
 
   componentWillUnmount() {
