@@ -120,11 +120,9 @@ class Note extends React.Component {
           <div className="editor__buttons">
             <button onClick={(e) => this.handleSubmit(e)}>
               <SaveIcon />
-              <span className="tooltip">Save</span>
             </button>
             <button>
               <LockIcon />
-              <span className="tooltip">Visibility</span>
             </button>
             {/* <button>
               <MarkdownIcon />
