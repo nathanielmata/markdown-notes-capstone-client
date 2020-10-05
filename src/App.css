@@ -126,6 +126,7 @@ label,
 
 .sidebar__toggle {
   display: inline-block;
+  cursor: pointer;
 }
 
 .sidebar__toggle:hover {
