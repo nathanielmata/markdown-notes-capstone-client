@@ -4,8 +4,6 @@ import TokenService from "../services/token-service";
 import UserContext from "../context/UserContext";
 
 export default function PrivateRoute({ component, ...props }) {
-  
-
   const userCtx = useContext(UserContext);
   const Component = component;
 
@@ -23,7 +21,7 @@ export default function PrivateRoute({ component, ...props }) {
       {...props}
       render={componentProps => (
         TokenService.hasAuthToken()
-          ? <Component {...componentProps} {...props} />
+          ? <Component {...componentProps} />
           : <Redirect
               to={{
                 pathname: '/login',

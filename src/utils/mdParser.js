@@ -69,14 +69,47 @@ const mdParser = (() => {
     return str;
   }
 
+  function linkMatch(str) {
+    // let regex = /https?\:\/\/([^._-]([a-zA-Z0-9]|(\-?(?!\-))){1,63})?\b[\.\:]?([^._-]([a-zA-Z0-9]|(\-?(?!\-))){1,63})?\b[\.\:]([a-zA-Z]){0,63}/g;
+    let protocol = /https?:\/\//;
+    let subdomain = /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/;
+    let sep = /\b[.:]?/;
+    let domain = subdomain;
+    let tld = /\b[.:]([a-zA-Z]){0,63}/;
+    let flags = "g"
+
+    let regex = new RegExp(
+      protocol.source +
+      subdomain.source +
+      sep.source +
+      domain.source +
+      tld.source, flags
+    );
+    
+    match = str.match(regex);
+    if (match) {
+      str = `<a href="${match}">${match}</a>`;
+    }
+    return str;
+  } 
+
+  function escSpecial(str) {
+    const c = { "<": "&lt;", ">": "&gt;", "&": "&amp;" };
+    return str.replace(/[<&>]/g, function (s) {
+      return c[s];
+    });
+  }
+
   return {
     parse: (content) => {
       const arr = content.split("\n");
       return arr.map((str, idx) => {
-        let mdMatch = headingMatch(str);
+        let mdMatch = escSpecial(str);
+        mdMatch = headingMatch(mdMatch);
         mdMatch = codeBlockMatch(mdMatch);
         mdMatch = ulMatch(mdMatch, arr[idx - 1], arr[idx + 1]);
         mdMatch = emMatch(mdMatch);
+        mdMatch = linkMatch(mdMatch);
         return mdMatch;
       });
     },
