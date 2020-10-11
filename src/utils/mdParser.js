@@ -75,7 +75,7 @@ const mdParser = (() => {
     let subdomain = /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/;
     let sep = /\b[.:]?/;
     let domain = subdomain;
-    let tld = /\b[.:]([a-zA-Z]){0,63}/;
+    let tld = /\b[.:]([a-zA-Z]){1,63}\b/;
     let flags = "g"
 
     let regex = new RegExp(
@@ -88,7 +88,7 @@ const mdParser = (() => {
     
     match = str.match(regex);
     if (match) {
-      str = `<a href="${match}">${match}</a>`;
+      str = str.replace(regex, `<a href="${match}">${match}</a>`);
     }
     return str;
   } 
