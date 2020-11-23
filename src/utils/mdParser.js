@@ -70,21 +70,15 @@ const mdParser = (() => {
   }
 
   function linkMatch(str) {
-    // let regex = /https?\:\/\/([^._-]([a-zA-Z0-9]|(\-?(?!\-))){1,63})?\b[\.\:]?([^._-]([a-zA-Z0-9]|(\-?(?!\-))){1,63})?\b[\.\:]([a-zA-Z]){0,63}/g;
-    let protocol = /https?:\/\//;
-    let subdomain = /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/;
-    let sep = /\b[.:]?/;
-    let domain = subdomain;
-    let tld = /\b[.:]([a-zA-Z]){1,63}\b/;
-    let flags = "g"
+    const urlPatterns = Object.values({
+      protocol: /https?:\/\//,
+      subdomain: /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/,
+      sep: /\b[.:]?/,
+      domain: /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/,
+      tld: /\b[.:]([a-zA-Z]){1,63}\b/,
+    })
 
-    let regex = new RegExp(
-      protocol.source +
-      subdomain.source +
-      sep.source +
-      domain.source +
-      tld.source, flags
-    );
+    let regex = new RegExp(urlPatterns.map(r => r.source).join(""), "g");
     
     match = str.match(regex);
     if (match) {
@@ -95,9 +89,8 @@ const mdParser = (() => {
 
   function escSpecial(str) {
     const c = { "<": "&lt;", ">": "&gt;", "&": "&amp;" };
-    return str.replace(/[<&>]/g, function (s) {
-      return c[s];
-    });
+    str = str.replace(/[<&>]/g, (s) => c[s]);
+    return str;
   }
 
   return {
