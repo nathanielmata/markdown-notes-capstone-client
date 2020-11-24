@@ -109,6 +109,15 @@ label,
   border-radius: 0;
 }
 
+.header .home__link {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.header .home__link:hover {
+  color: #CCCCCC;
+}
+
 .header__nav {
   position: absolute;
   height: auto;
