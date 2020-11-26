@@ -10,12 +10,12 @@ const TimeAgo = (() => {
 
     // return array of objects containing
     // r: time range validator
-    // d: time unit in milliseconds
+    // u: time unit in milliseconds
     // s: time suffix
     return [
-      {r: (ms) => ms < unitMs.h, d: unitMs.m, s: " min ago"},
-      {r: (ms) => ms > unitMs.h && ms < unitMs.d, d: unitMs.h, s: " hours ago"},
-      {r: (ms) => ms > unitMs.d, d: unitMs.d, s: " days ago"},
+      {r: (ms) => ms < unitMs.h, u: unitMs.m, s: " min ago"},
+      {r: (ms) => ms > unitMs.h && ms < unitMs.d, u: unitMs.h, s: " hours ago"},
+      {r: (ms) => ms > unitMs.d, u: unitMs.d, s: " days ago"},
     ];
   };
 
@@ -25,7 +25,7 @@ const TimeAgo = (() => {
       let time_ago = "";
       for (let timestamp of timeUnits()){
         if (timestamp.r(ms)) {
-          let timeUnits = Math.round(ms/timestamp.d).toString();
+          let timeUnits = Math.round(ms/timestamp.u).toString();
           let suffix = timestamp.s;
           time_ago = timeUnits + suffix;
           break;
