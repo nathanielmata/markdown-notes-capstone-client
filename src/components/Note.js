@@ -2,7 +2,7 @@ import React from "react";
 import NoteContext from "../context/NoteContext";
 import NoteApiService from "../services/note-api-service";
 import { LockIcon, SaveIcon } from "./Icons";
-import mdParser from "../utils/mdParser";
+import MdParser from "../utils/md-parser";
 
 class Note extends React.Component {
   static contextType = NoteContext;
@@ -24,7 +24,7 @@ class Note extends React.Component {
   };
 
   handleParsing = (content) => {
-    return mdParser.parse(content);
+    return MdParser.parse(content);
   };
 
   handleLoading = () => {

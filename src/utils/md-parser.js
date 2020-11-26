@@ -1,4 +1,4 @@
-const mdParser = (() => {
+const MdParser = (() => {
   let match;
 
   function headingMatch(str) {
@@ -76,8 +76,11 @@ const mdParser = (() => {
       sep: /\b[.:]?/,
       domain: /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/,
       tld: /\b[.:]([a-zA-Z]){1,63}\b/,
+      path: /\/?[A-Za-z0-9\-\._~!$&'()*+,;=:@\/]*/,
     })
 
+    // The .source property returns a String containing the source text of the regexp object,
+    // and it doesn't contain the two forward slashes on both sides and any flags
     let regex = new RegExp(urlPatterns.map(r => r.source).join(""), "g");
     
     match = str.match(regex);
@@ -109,4 +112,4 @@ const mdParser = (() => {
   };
 })();
 
-export default mdParser;
+export default MdParser;
