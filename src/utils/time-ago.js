@@ -1,4 +1,4 @@
-const timeAgo = (() => {
+const TimeAgo = (() => {
 
   function timeUnits() {
     // time units (minute, hour, day) in milliseconds
@@ -23,17 +23,18 @@ const timeAgo = (() => {
     parse: (date) => {
       const ms = (Date.now() - Date.parse(date));
       let time_ago = "";
-      timeUnits().forEach(timestamp => {
+      for (let timestamp of timeUnits()){
         if (timestamp.r(ms)) {
           let timeUnits = Math.round(ms/timestamp.d).toString();
           let suffix = timestamp.s;
           time_ago = timeUnits + suffix;
+          break;
         }
-      })
+      }
       return time_ago;
     },
   };
 
 })();
 
-export default timeAgo;
+export default TimeAgo;

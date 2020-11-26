@@ -1,5 +1,5 @@
 import React from "react";
-import timeAgo from "../utils/timeAgo";
+import TimeAgo from "../utils/time-ago";
 import NoteListContext from "../context/NoteListContext";
 
 class Dashboard extends React.Component {
@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
                 <a href={`/note/${note.id}`}>
                   <div className="main__dashboard--card-name">{note.title}</div>
                   <div className="main__dashboard--card-date">
-                    Edited {timeAgo.parse(note.updated_at ?? note.created_at)}
+                    Edited {TimeAgo.parse(note.updated_at ?? note.created_at)}
                   </div>
                 </a>
               </div>
