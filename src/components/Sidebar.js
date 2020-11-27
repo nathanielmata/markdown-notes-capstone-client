@@ -16,6 +16,14 @@ const Sidebar = (props) => (
     </div>
 
     <div className="nav__sidebar--list">
+
+      {props.notes.length < 1 &&
+        <div className="nav__sidebar--list-empty">
+          <h2>You don't have any notes</h2>
+          <a class="button" href="/note/new">Create New Note</a>
+        </div>
+      }
+
       <ul>{props.notes.map((note, idx) => {
         return (
           <li key={idx}>

@@ -7,6 +7,16 @@ class Dashboard extends React.Component {
   
   render() {
     const { notes } = this.context;
+
+    if (notes.length < 1) {      
+      return (
+        <div className="main__dashboard main__dashboard--empty">
+          <h2>You don't have any notes</h2>
+          <a class="button" href="/note/new">Create New Note</a>
+        </div>
+      );
+    }
+
     return (
       <div className="main__dashboard">
         <h1>Latest Notes</h1>
