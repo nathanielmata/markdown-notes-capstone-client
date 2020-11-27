@@ -2,6 +2,7 @@ import React from "react";
 import Note from "./Note";
 
 const NoteCreate = (props) => <Note note={newNote()} {...props} />;
+
 export default NoteCreate;
 
 const newNote = () => {
