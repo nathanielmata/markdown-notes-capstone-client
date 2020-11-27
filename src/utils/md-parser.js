@@ -76,7 +76,7 @@ const MdParser = (() => {
       sep: /\b[.:]?/,
       domain: /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/,
       tld: /\b[.:]([a-zA-Z]){1,63}\b/,
-      path: /\/?[A-Za-z0-9\-\._~!$&'()*+,;=:@\/]*/,
+      path: /\/?[A-Za-z0-9\-._~!$&'()*+,;=:@/]*/,
     })
 
     // The .source property returns a String containing the source text of the regexp object,
