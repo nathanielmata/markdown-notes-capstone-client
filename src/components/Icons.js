@@ -30,7 +30,7 @@ const SidebarOpenIcon = ({classVariant}) => (
   </SvgIcon>
 );
 
-const SidebarCloseIcon = ({classVariant}) => (
+const CloseIcon = ({classVariant}) => (
   <SvgIcon 
     viewBox="0 0 20 20"
     ariaLabel="Close Sidebar"
@@ -109,13 +109,25 @@ const FileIcon = ({classVariant}) => (
   </SvgIcon>
 );
 
+const SpinnerIcon = ({classVariant}) => (
+  <SvgIcon 
+    viewBox="0 0 60 60"
+    ariaLabel="Loading..."
+    classVariant={[classVariant]}>
+    <path fill="#ECEAEC" d="M30,8c12.1,0,22,9.9,22,22s-9.9,22-22,22C17.9,52,8,42.1,8,30S17.9,8,30,8 M30,0C13.4,0,0,13.4,0,30
+	s13.4,30,30,30s30-13.4,30-30S46.6,0,30,0L30,0z"/>
+    <path fill="#282C34" d="M60,30h-8c0,12.1-9.9,22-22,22v8C46.6,60,60,46.6,60,30z"/>
+  </SvgIcon>
+);
+
 export {
   SidebarOpenIcon,
-  SidebarCloseIcon,
+  CloseIcon,
   LockIcon,
   UnlockIcon,
   ProfileIcon,
   SaveIcon,
   MarkdownIcon,
   FileIcon,
+  SpinnerIcon,
 }
