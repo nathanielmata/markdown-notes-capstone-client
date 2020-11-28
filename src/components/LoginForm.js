@@ -35,15 +35,15 @@ export default class LoginForm extends Component {
         <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="user_name form__input--group">
           <label htmlFor="user_name">User name</label>
-          <input required name="user_name" id="user_name"></input>
+          <input type="text" id="user_name" name="user_name" required></input>
         </div>
         <div className="password form__input--group">
           <label htmlFor="password">Password</label>
           <input
-            required
-            name="password"
             type="password"
             id="password"
+            name="password"
+            required
           ></input>
         </div>
         <button type="submit">Login</button>
