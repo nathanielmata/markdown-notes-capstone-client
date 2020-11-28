@@ -32,11 +32,13 @@ class NoteUpdate extends React.Component {
 
   render() {
     const { error, note } = this.context;
-    if (error) {
-      return (error === `Note doesn't exist`)
-        ? <h2>Note not found.</h2>
-        : <h2>There was an error</h2>
+    
+    if (error === `Note doesn't exist`) {
+      return (
+        <h2>Note not found.</h2>
+      );
     }
+
     return (
       <>
       {TokenService.getAuthToken()
