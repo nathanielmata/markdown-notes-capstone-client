@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
       return (
         <div className="main__dashboard main__dashboard--empty">
           <h2>You don't have any notes</h2>
-          <a class="button" href="/note/new">Create New Note</a>
+          <a className="button" href="/note/new">Create New Note</a>
         </div>
       );
     }

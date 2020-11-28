@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SidebarCloseIcon } from './Icons';
-import { LockIcon, UnlockIcon } from './Icons';
+import { LockIcon, UnlockIcon, CloseIcon } from './Icons';
 
 const Sidebar = (props) => (
   <nav className="nav__sidebar" style={{height: sidebarHeight()}}>
 
     <div className="nav__sidebar--close" onClick={() => props.closeMenus()}>
-      <SidebarCloseIcon />
+      <CloseIcon />
     </div>
 
     <div className="nav__sidebar--search">
@@ -20,7 +19,7 @@ const Sidebar = (props) => (
       {props.notes.length < 1 &&
         <div className="nav__sidebar--list-empty">
           <h2>You don't have any notes</h2>
-          <a class="button" href="/note/new">Create New Note</a>
+          <a className="button" href="/note/new">Create New Note</a>
         </div>
       }
 
