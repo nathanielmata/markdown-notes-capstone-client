@@ -39,8 +39,15 @@ const Sidebar = (props) => (
 
 export default Sidebar;
 
+Sidebar.defaultProps = {
+  notes: []
+}
+
 const sidebarHeight = () => {
-  const height = document.getElementById("main__container").offsetHeight;;
+  const height = document.getElementById("main__container") !== null
+    ? document.getElementById("main__container").offsetHeight
+    : '400';
+
   return `${height}px`;
 }
 

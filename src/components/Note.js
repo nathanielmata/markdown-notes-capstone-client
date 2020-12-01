@@ -198,6 +198,7 @@ class Note extends React.Component {
 
 	render() {
     const { title, content, markup } = this.state;
+    const id = this.props.match ? this.props.match.params.id : null;
 		return (
 			<div className='editor__wrapper'>
 				<div className='editor__above'>
@@ -220,7 +221,7 @@ class Note extends React.Component {
 						<button onClick={(e) => this.handleSubmit(e)}>
 							<SaveIcon />
 						</button>
-            { this.props.match.params.id && 
+            { id && 
               <button onClick={() => this.deleteNote()}>
                 <DeleteIcon />
               </button>
@@ -247,3 +248,10 @@ class Note extends React.Component {
 }
 
 export default Note;
+
+Note.defaultProps = {
+  note: {
+    title: "Untitled",
+    content: "# Create a new note",
+  }
+};
