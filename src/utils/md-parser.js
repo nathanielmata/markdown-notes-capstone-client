@@ -24,7 +24,7 @@ const MdParser = (() => {
 
   function ulMatch(str, prev, next) {
     const regex = /^[-*]\s.+/g;
-    const match = str.match(regex);
+    match = str.match(regex);
     if (match) {
       let out = String();
       out += !prev || !prev.match(regex) ? `<ul>` : "";
@@ -36,23 +36,21 @@ const MdParser = (() => {
   }
   
   function emMatch(str) {
-    let regex = /\s(__|\*\*)[^.]+(__|\*\*)\s\n*/g;
+    let regex = /(__|\*\*)[^.]+(__|\*\*)\n*/g;
     match = str.match(regex);
     if (match) {
       let out = String();
       const arr = str.split(regex);
-      out += "<p>" + arr[0];
 
       match.forEach((m, idx) => {
         out += `<strong>${m.replace(/(_{2}|\*{2})([^_*]+)\1/g, "$2")}</strong>`;
         out += idx === match.length - 1 ? arr[arr.length - 1] : "";
       });
 
-      out += "</p>";
       str = out;
     }
 
-    regex = /\s[_*][^_*]+[_*]\s\n*/g;
+    regex = /[_*][^_*]+[_*]\n*/g;
     match = str.match(regex);
     if (match) {
       let out = String();
@@ -124,6 +122,23 @@ const MdParser = (() => {
     return str;
   }
 
+  function pMatch(str, prev, next) {
+    let regex = /(?<!(<.*>))(.*)(?!<\/.*>)/g;
+
+    match = regex.exec(str);
+    if (match) {
+      let out = String();
+      if (prev === "" && !next) {
+        out += `<p>`;
+        out += `${match[0]}`;
+        out += `</p>`;
+        str = out;
+      }
+    }
+
+    return str;
+  }
+
   function escSpecial(str) {
     const c = { "<": "&lt;", ">": "&gt;", "&": "&amp;" };
     str = str.replace(/[<&>]/g, (s) => c[s]);
@@ -142,6 +157,7 @@ const MdParser = (() => {
         mdMatch = imageMatch(mdMatch);
         mdMatch = linkMatch(mdMatch);
         mdMatch = titleLinkMatch(mdMatch);
+        mdMatch = pMatch(mdMatch, arr[idx - 1], arr[idx + 1]);
         return mdMatch;
       });
     },

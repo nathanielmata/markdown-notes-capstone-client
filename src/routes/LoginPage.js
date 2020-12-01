@@ -17,6 +17,14 @@ export default class LoginPage extends Component {
   render() {
     return (
       <section className="login">
+        <div className="login__demo">
+          <div>
+            <strong>demo email:</strong> <span>demouser1</span>
+          </div>
+          <div>
+            <strong>demo password:</strong> <span>password1</span>
+          </div>
+        </div>
         <div className="login__inner">
           <h2>Sign in</h2>
           {TokenService.getAuthToken()

@@ -81,6 +81,11 @@ nav .button {
 	font-size: 28px;
 }
 
+nav .button.noauth {
+  padding: 5px 10px;
+  font-size: 1em;
+}
+
 label,
 .label {
 	display: block;
@@ -119,7 +124,8 @@ label,
 }
 
 .header .home__link {
-	font-size: 20px;
+  font-size: 16px;
+  width: 100px;
 	text-decoration: none;
 }
 
@@ -147,8 +153,8 @@ label,
 }
 
 .header__nav li {
-	padding: 0 16px;
-	font-size: 13px;
+	padding: 16px 8px;
+	font-size: 12px;
 }
 
 .header__nav li:last-child {
@@ -353,6 +359,21 @@ label,
 	height: 100%;
 	overflow-y: auto;
 }
+
+table {
+  display: table;
+}
+
+thead,
+tbody,
+tfoot,
+tr {
+   height: 50px;
+   border: 1px solid black;
+   text-align: left;
+   font-weight: inherit;
+}
+
 
 .main__dashboard {
 	margin: 0 auto;
@@ -665,11 +686,12 @@ label,
 	margin: 0;
 	padding: 28px;
 	justify-content: center;
-	align-items: center;
+  align-items: center;
+  text-align: center;
 }
 
 .landing h1 {
-	font-size: 72px;
+	font-size: 3.5em;
 	margin: 0;
 }
 
@@ -696,6 +718,16 @@ label,
 	background-color: var(--main-dark);
 }
 
+.login__demo {
+  color: #FFFFFF;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.login__demo > div {
+  margin-bottom: 10px;
+}
+
 .login h2 {
 	margin-top: 0;
 }
@@ -704,7 +736,7 @@ label,
 	display: flex;
 	flex-direction: column;
 	max-width: 540px;
-	min-height: 400px;
+	min-height: 360px;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
@@ -740,6 +772,23 @@ label,
 	padding: 12px 36px;
 }
 
+.how__to {
+  padding: 40px;
+  max-width: 600px;
+}
+
+.how__to--syntax code {
+  display: inline-block;
+  min-width: 100%;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 360px) {
+  .header .home__link {
+    width: auto;
+  }
+}
+
 @media screen and (min-width: 480px) {
   .header > * {
     margin-right: 28px;
@@ -747,6 +796,10 @@ label,
 
   .header__user--inner {
     margin: 0 20px;
+  }
+
+  .header .home__link {
+    font-size: 20px;
   }
 
   nav button,
@@ -768,5 +821,13 @@ label,
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     column-gap: 20px;
     row-gap: 20px;
+  }
+
+  .landing h1 {
+    font-size: 72px;
+  }
+
+  .login__inner {
+    min-height: 400px;
   }
 }

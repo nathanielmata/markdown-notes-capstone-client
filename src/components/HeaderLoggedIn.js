@@ -94,6 +94,7 @@ class HeaderLoggedIn extends React.Component {
           <>
             {menus.user &&
               <ul className="header__dropdown header__user--dropdown">
+                <li><Link to="/how-to" onClick={() => this.closeMenus()}>Syntax Guide</Link></li>
                 <li><Link to="/" onClick={() => this.closeMenus()}>Dashboard</Link></li>
                 <li><Link to="/" onClick={() => this.handleLogout()}>Logout</Link></li>
               </ul>}

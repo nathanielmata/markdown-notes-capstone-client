@@ -7,7 +7,8 @@ class HeaderNotLoggedIn extends React.Component {
       <>
         { this.homeLink("left") }
         <HeaderNavList>
-          <li><a href="/login" className="button" >SIGN IN</a></li>
+          <li><a href="/how-to" className="button noauth" >HOW TO</a></li>
+          <li><a href="/login" className="button noauth" >SIGN IN</a></li>
         </HeaderNavList>
       </>
     );

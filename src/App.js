@@ -9,6 +9,7 @@ import LoginPage from "./routes/LoginPage";
 import NoteCreate from "./components/NoteCreate";
 import NoteUpdate from "./components/NoteUpdate";
 import Dashboard from "./components/Dashboard";
+import HowToPage from "./routes/HowToPage";
 import NotFound from "./components/NotFound";
 
 
@@ -49,6 +50,7 @@ class App extends React.Component {
                 component={LandingPage} />
             }/>
 
+            <Route exact path="/how-to"component={HowToPage} />
             <Route path="/login" component={LoginPage} />
 
             <Route exact path="/dashboard" render={(props) => 
