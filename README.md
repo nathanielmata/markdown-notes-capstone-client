@@ -1,92 +1,44 @@
 # Markdown Notes Capstone 
 
-'Markdown Notes' is a note taking app that lets you create notes in a markdown editor and preview the html output, then save the note to your user account where you can tag the note as public or private.
+'Markdown Notes' is a note taking app that lets you create notes in a markdown editor and preview the html output, then save the note to your user account.  
 
-Context: I'm always taking notes, but my notes are a mess (show my messy notes). I decided to use Markdown to write my notes for visual organization.
+# Features  
 
-Wireframes/Screenshots
+- Take notes using basic markdown syntax
+- Save notes to an account
+- Delete notes from an account
+- Preview the html output of your markdown
 
-Features: I created the Markdown Notes app to organize notes
-- write
-- preview
-- save
-- edit
-- search(pending)
-- tag(pending)
+## Technology  
 
-Tech Stack:
 - Front-End: HTML5, CSS3, JavaScript ES6, React
 - Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
-- Development Environment: Heroku, Vercel
+- Prodcution Environment: Heroku, Vercel
 
-Demo:
-- https://markdown-notes-capstone-client.vercel.app
+## Working Prototype  
 
-Lessons Learned: 
-- it can be hard to deal with multiple contexts in a single component
+You can access a working prototype of the:
 
-What would I do differently:
-- use uuid for note routing ids rather than incremented integer
-- consolidate buttons in editor into a dropdown
-- break up list data loading(lazy loading until user scrolls)
+  React(Client) app here:  
+    https://markdown-notes-capstone-client.vercel.app  
+    
+  Node/Express(Server) API here:  
+    https://infinite-sea-85899.herokuapp.com/api  
 
-Additional features:
-- search
-- tagging notes
-  - tags table in database
-- indicators and transitions for users
-- user public page for notes marked public
-- export .md or .html file
 
-## Working Prototype
+## User Stories  
 
-You can access a working prototype of the React app here: https://markdown-notes-capstone-client.vercel.app and Node api app here: https://infinite-sea-85899.herokuapp.com/api
+This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER  
 
-## User Stories???
+#### Landing Page  
 
-This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
-
-#### Landing Page
-
-- as an UNREGISTERED USER/REGISTERED USER
-- I want to go to a landing page that introduces the app and explains its features and provides links to sign-in page, sign-up page and the try-it-out editor.
+- as a REGISTERED USER
+- I want to go to a landing page that introduces the app and explains its features and provides links to sign-in page, sign-up page.
 - So I can learn more about the app and how it works
 
 ---
 
-#### Landing Page
-
-- as an UNREGISTERED USER
-- I want to try out the editor without registering and create a note in a Markdown editor while previewing the output HTML
-- So I can export my note as a Markdown or HTML file to my computer
-
----
-
-#### Login/Signup Page
-
-- as an UNREGISTERED USER
-- I want to create an account with a username and password
-- So I can save notes to my account
-
----
-
-#### User Public Page
-
-- as an UNREGISTERED USER
-- I want to see a list of public notes saved to a REGISTERED USER account from a unique url
-- So I can read a public note in Markdown or HTML in a browser
-
----
-
-#### FAQ/Help page
-
-- as a UNREGISTERED/REGISTERED USER
-- I want to go to an FAQ page to help me understand how to use the app
-- So I can effectively use the app
-
----
-
-#### Login
+#### Login  
 
 - as a REGISTERED USER
 - I want to login to my account with my unique username and password and start a logged in session
@@ -94,7 +46,16 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 ---
 
-#### User dasboard page
+#### How-to page  
+
+- as an UNREGISTERED/REGISTERED USER
+- I want to go to a How-to page to help me understand how to use the app
+- So I can effectively use the app
+
+---
+
+
+#### User dasboard page  
 
 - as a REGISTERED USER
 - I want to view my user dashboard
@@ -102,7 +63,7 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 ---
 
-#### User dasboard page
+#### User dasboard page(Logout)  
 
 - as a REGISTERED USER
 - I want to logout of my account
@@ -110,45 +71,22 @@ This app is for two types of users: a REGISTERED USER and an UNREGISTERED USER
 
 ---
 
-#### User dasboard page
-
-- as a REGISTERED USER
-- I want to generate a unique url where my public notes can be viewed on the open web
-- So I can share the url with anyone
-
----
-
-#### User profile page
-
-- as a REGISTERED USER
-- I want to view my profile
-- So I can edit my password, username, user email and name displayed on my public page
-
----
-
-#### User new note page
+#### User new note page  
 
 - as a REGISTERED USER
 - I want to create a new Markdown note
-- So I can edit and save the Markdown note in the edotor while previewing the output HTML
+- So I can edit and save the Markdown note in the editor while previewing the output HTML
 
 ---
 
-#### User edit note page
+#### User edit note page  
 
 - as a REGISTERED USER
-- I want to search for and view a saved note
-- So I can edit and save the note in Markdown while previewing the output HTML
+- I want to edit a saved Markdown note
+- So I can save the Markdown note in the editor while previewing the output HTML
 
----
 
-#### User new & edit note page
-
-- as a REGISTERED USER
-- I want to make a Markdown note public
-- So anyone can view a note from a unique URL in a web browser
-
-### Wireframes???
+### Wireframes
 
 Landing Page  
 :-------------------------:
@@ -186,49 +124,53 @@ User dashboard `user preferences dropdown` Page
 :-------------------------:
 ![User dashboard `user preferences dropdown` Page](./github-images/wireframes/dashboard-profile-logout-page-wireframe.png)
 
-## Screenshots (later)
+## Screenshots
 
-Landing/Login Page
+Landing Page
 :-------------------------:
-![Landing Page](/github-images/screenshots/login-page-screenshot.png)
-Landing/Register Page
-![Register Page](/github-images/screenshots/login-page-screenshot.png)
+![Landing Page](https://user-images.githubusercontent.com/1923736/100743793-095cf800-339a-11eb-8116-9a063ab55064.jpg)
 
-## Functionality???
+Dashboard Page
+:-------------------------:
+![Dashboard Page](https://user-images.githubusercontent.com/1923736/100743716-ed595680-3399-11eb-8d8d-3c75394a97ec.jpg)
 
-The app's functionality includes:
+Sign-in Page
+:-------------------------:
+![Sign-in Page](https://user-images.githubusercontent.com/1923736/100743888-2c87a780-339a-11eb-9084-0140ebac920d.jpg)
 
-- Every User has the ability to create an account
+Edit Note Page
+:-------------------------:
+![Edit Note Page](https://user-images.githubusercontent.com/1923736/100743757-fd713600-3399-11eb-879a-e36fa7a03684.jpg)
 
-## Technology
+New Note Page
+:-------------------------:
+![New Note Page](https://user-images.githubusercontent.com/1923736/100743829-17ab1400-339a-11eb-8cbd-c87d678f6ef9.jpg)
 
-- Front-End: HTML5, CSS3, JavaScript ES6, React
-- Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
-- Development Environment: Heroku, Vercel
+Sidebar
+:-------------------------:
+![Sidebar](https://user-images.githubusercontent.com/1923736/100743856-22fe3f80-339a-11eb-886f-d9d723c80eed.jpg)
 
-## Front-end Structure - React Components Map (later)
+## API Documentation 
 
-- **Index.js** (stateless)
-  - **App.js** (stateful)
-    - **LandingPage.js** (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the **App.js**
-      - **Login.js** (stateful) -
-      - **Register.js** (stateful) -
-    - **Navbar.js** (stateless) -
+POST /api/auth/login  
+- post's a user's credentials for login
 
-## Back-end Structure - Business Objects (later)
+GET /api/notes  
+- get a user's notes  
 
-- Users (database table)
-  - id (auto-generated)
-  - username (email validation)
-  - password (at least 8 chars, at least one alpha and a special character validation)
+POST /api/notes  
+- post a new note
 
-## API Documentation (later)
+GET /api/notes/:id  
+- get a note by id
 
-API Documentation details:
+DELETE /api/notes/:id  
+- delete a note by id
 
-- get all users
+PATCH /api/notes/:id  
+- update a note by id
 
-## Responsive (done)
+## Responsive
 
 App is built to be usable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
 
@@ -236,21 +178,30 @@ App is built to be usable on mobile devices, as well as responsive across mobile
 
 This is v1.0 of the app, but future enhancements are expected to include:
 
-- add more functionality
+- allow users to register
+- enable users to view and create notes without having to login
+- allow users to make private notes public
+- extend markdown support beyond basic syntax 
+- allow users to export .md or .html file
+- search notes  
+- tagging notes 
 
-## How to run it (done)
+
+## How to run it
 
 Use command line to navigate into the project folder and run the following in terminal
 
-### Local Node scripts
+### Local Server/Node scripts
 
+- clone repo https://github.com/nathanielmata/markdown-notes-capstone-server
 - To install the node project ===> npm install
 - To migrate the database ===> npm run migrate -- 1
 - To run Node server (on port 8000) ===> npm run dev
 - To run tests ===> npm run test
 
-### Local React scripts
+### Local Client/React scripts
 
+- clone repo https://github.com/nathanielmata/markdown-notes-capstone-client
 - To install the react project ===> npm install
 - To run react (on port 3000) ===> npm start
 - To run tests ===> npm run test
