@@ -84,8 +84,11 @@ class HeaderLoggedIn extends React.Component {
           }
         </>
         <div className="header__user">
-          <div className="header__user--inner" onClick={() => this.toggleMenu("user")}>
-            <ProfileIcon classVariant="header__user--img"/>
+          <div 
+            className="header__user--inner" 
+            onClick={() => this.toggleMenu("user")}
+            style={this.state.menus.sidebar ? {marginLeft: '0'} : {}}>
+            <ProfileIcon classVariant="header__user--img" />
             <span className="header__user--span">{userCtx.user.full_name}</span>
           </div>
           <>
@@ -98,7 +101,9 @@ class HeaderLoggedIn extends React.Component {
         </div>
         <HeaderNavList>
           <li>
-            <Link to="/note/new" className="button" onClick={() => this.closeMenus()}>NEW+</Link>
+            <Link to="/note/new" className="button header__nav--new" onClick={() => this.closeMenus()}>
+              <span className="header__nav--new-span">NEW</span><span>+</span>
+            </Link>
           </li>
         </HeaderNavList>
       </>

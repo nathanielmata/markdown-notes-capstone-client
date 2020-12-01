@@ -1,17 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LockIcon, UnlockIcon, CloseIcon } from './Icons';
+import { CloseIcon } from './Icons';
 
 const Sidebar = (props) => (
   <nav className="nav__sidebar" style={{height: sidebarHeight()}}>
 
     <div className="nav__sidebar--close" onClick={() => props.closeMenus()}>
       <CloseIcon />
-    </div>
-
-    <div className="nav__sidebar--search">
-      <input className="nav__sidebar--input" type="text" />
-      <button>GO</button>
     </div>
 
     <div className="nav__sidebar--list">
@@ -27,11 +22,6 @@ const Sidebar = (props) => (
         return (
           <li key={idx}>
             <Link to={`/note/${note.id}`} title={note.title} onClick={() => props.closeMenus()}>
-              <>
-                {!note.public 
-                  ? <LockIcon className="nav__sidebar--icons"/>
-                  : <UnlockIcon className="nav__sidebar--icons" />}
-              </>
               <span className="nav__sidebar--list-title">
                 {note.title.length > 24
                   ? note.title.slice(0,23) + "..."

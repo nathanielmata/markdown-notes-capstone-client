@@ -35,8 +35,8 @@ const CloseIcon = ({classVariant}) => (
     viewBox="0 0 20 20"
     ariaLabel="Close Sidebar"
     classVariant={["sidebar__toggle--svg", classVariant]}>
-    <line x1="2" x2="18" y1="2" y2="18" stroke="#FFFFFF" strokeWidth="5" />
-    <line x1="18" x2="2" y1="2" y2="18" stroke="#FFFFFF" strokeWidth="5" />
+    <line x1="2" x2="18" y1="2" y2="18" stroke="#282c34" strokeWidth="5" />
+    <line x1="18" x2="2" y1="2" y2="18" stroke="#282c34" strokeWidth="5" />
   </SvgIcon>
 );
 
@@ -120,6 +120,15 @@ const SpinnerIcon = ({classVariant}) => (
   </SvgIcon>
 );
 
+const DeleteIcon = ({classVariant}) => (
+  <SvgIcon 
+    viewBox="0 0 22 22"
+    ariaLabel="Delete"
+    classVariant={["editor__buttons--svg", classVariant]}>
+    <polygon fill="#000000" points="21.4,2.4 19.6,0.6 11,9.2 2.4,0.6 0.6,2.4 9.2,11 0.6,19.6 2.4,21.4 11,12.8 19.6,21.4 21.4,19.6 12.8,11 "/>
+  </SvgIcon>
+);
+
 export {
   SidebarOpenIcon,
   CloseIcon,
@@ -130,4 +139,5 @@ export {
   MarkdownIcon,
   FileIcon,
   SpinnerIcon,
+  DeleteIcon,
 }

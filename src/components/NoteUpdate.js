@@ -32,11 +32,13 @@ class NoteUpdate extends React.Component {
 
   render() {
     const { error, note } = this.context;
-    
-    if (error === `Note doesn't exist`) {
-      return (
-        <h2>Note not found.</h2>
-      );
+
+    if (error) {
+      if (error.error === `Note doesn't exist`) {
+        return (
+          <h2>Note not found.</h2>
+        );
+      }
     }
 
     return (

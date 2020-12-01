@@ -63,6 +63,19 @@ const NoteApiService = {
         : res.json()
     )
   },
+  deleteNote(id) {
+    return fetch(`${config.API_ENDPOINT}/notes/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+    .then(res =>
+      (!res.ok)
+        ? Promise.reject(res)
+        : res
+    )
+  },
 };
 
 export default NoteApiService;

@@ -36,7 +36,7 @@ const MdParser = (() => {
   }
   
   function emMatch(str) {
-    let regex = /(__|\*\*)[^.]+(__|\*\*)\n*/g;
+    let regex = /\s(__|\*\*)[^.]+(__|\*\*)\s\n*/g;
     match = str.match(regex);
     if (match) {
       let out = String();
@@ -52,7 +52,7 @@ const MdParser = (() => {
       str = out;
     }
 
-    regex = /[_*][^_*]+[_*]\n*/g;
+    regex = /\s[_*][^_*]+[_*]\s\n*/g;
     match = str.match(regex);
     if (match) {
       let out = String();
@@ -69,14 +69,31 @@ const MdParser = (() => {
     return str;
   }
 
+  function imageMatch(str) {
+    const imagePatterns = Object.values({
+      alt: /!\[([^\t\n\f/>"'=]+)\]/,
+      path: /\((.*)\)/,
+    })
+
+    // The .source property returns a String containing the source text of the regexp object,
+    // and it doesn't contain the two forward slashes on both sides and any flags
+    let regex = new RegExp(imagePatterns.map(r => r.source).join(""), "g");
+
+    match = regex.exec(str);
+    if (match) {
+      str = str.replace(regex, `<img src="${match[2]}" alt="${match[1]}" />`);
+    }
+    return str;
+  }
+
   function linkMatch(str) {
     const urlPatterns = Object.values({
-      protocol: /https?:\/\//,
+      protocol: /(?<!src=")https?:\/\//,
       subdomain: /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/,
       sep: /\b[.:]?/,
       domain: /([^._-]([a-zA-Z0-9]|(-?(?!-))){1,63})?/,
       tld: /\b[.:]([a-zA-Z]){1,63}\b/,
-      path: /\/?[A-Za-z0-9\-._~!$&'()*+,;=:@/]*/,
+      path: /\/?[A-Za-z0-9\-._~!$&'*+,;=:@/]*/,
     })
 
     // The .source property returns a String containing the source text of the regexp object,
@@ -88,7 +105,24 @@ const MdParser = (() => {
       str = str.replace(regex, `<a href="${match}">${match}</a>`);
     }
     return str;
-  } 
+  }
+
+  function titleLinkMatch(str) {
+    const linkPatterns = Object.values({
+      title: /\[([^\t\n\f/>"'=]+)\]/,
+      url: /\(<a\shref="(https?:\/\/.*)">.*<\/a>\)/,
+    })
+
+    // The .source property returns a String containing the source text of the regexp object,
+    // and it doesn't contain the two forward slashes on both sides and any flags
+    let regex = new RegExp(linkPatterns.map(r => r.source).join(""), "g");
+
+    match = regex.exec(str);
+    if (match) {
+      str = str.replace(regex, `<a href="${match[2]}">${match[1]}</a>`);
+    }
+    return str;
+  }
 
   function escSpecial(str) {
     const c = { "<": "&lt;", ">": "&gt;", "&": "&amp;" };
@@ -105,7 +139,9 @@ const MdParser = (() => {
         mdMatch = codeBlockMatch(mdMatch);
         mdMatch = ulMatch(mdMatch, arr[idx - 1], arr[idx + 1]);
         mdMatch = emMatch(mdMatch);
+        mdMatch = imageMatch(mdMatch);
         mdMatch = linkMatch(mdMatch);
+        mdMatch = titleLinkMatch(mdMatch);
         return mdMatch;
       });
     },

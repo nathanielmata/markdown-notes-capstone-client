@@ -17,6 +17,11 @@ import "./App.css";
 class App extends React.Component {
   static contextType = NoteListContext;
 
+  addNote = (newNote) => {
+    const notes = this.context.getNotes();
+    this.context.setNotes([...notes, newNote]);
+  }
+
   updateNote = (noteUpdate) => {
     const notes = this.context.notes.map(note => {
       return note.id === noteUpdate.id
@@ -26,9 +31,9 @@ class App extends React.Component {
     this.context.setNotes(notes);
   }
 
-  addNote = (newNote) => {
-    const notes = this.context.getNotes();
-    this.context.setNotes([...notes, newNote]);
+  deleteNote = (id) => {
+    const notes = this.context.notes.filter(note => note.id !== +id);
+    this.context.setNotes(notes);
   }
 
   render() {
@@ -63,6 +68,7 @@ class App extends React.Component {
               <PrivateRoute
                 {...props}
                 updateNote={this.updateNote}
+                deleteNote={this.deleteNote}
                 component={NoteUpdate} />
             }/>
 

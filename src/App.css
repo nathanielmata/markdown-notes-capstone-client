@@ -77,8 +77,8 @@ nav ul {
 nav button,
 nav .button {
 	font-weight: 500;
-	padding: 5px 10px;
-	font-size: 1em;
+	padding: 0 10px 4px;
+	font-size: 28px;
 }
 
 label,
@@ -106,7 +106,7 @@ label,
 }
 
 .header > * {
-	margin-right: 28px;
+	margin-right: 16px;
 }
 
 .header > *:last-child {
@@ -131,6 +131,19 @@ label,
 	position: absolute;
 	height: auto;
 	right: 0;
+}
+
+.header__nav a.button span {
+  vertical-align: unset;
+}
+
+.header__nav--new {
+  position: relative;
+  top: -2px;
+}
+
+.header__nav--new-span {
+  display: none;
 }
 
 .header__nav li {
@@ -163,7 +176,7 @@ label,
 .header__user {
 	position: relative;
 	margin-top: -2px;
-	padding: 0 12px 0 0;
+  padding: 0;
 }
 
 .header__user > * {
@@ -171,7 +184,8 @@ label,
 }
 
 .header__user--inner {
-	position: relative;
+  position: relative;
+  margin: 0 14px;
 	cursor: pointer;
 	z-index: 9;
 }
@@ -246,9 +260,9 @@ label,
 
 .nav__sidebar > .nav__sidebar--close {
 	position: absolute;
-	margin-top: -48px;
-	margin-right: 12px;
-	right: 0px;
+  margin-right: 12px;
+  top: 16px;
+	left: 32px;
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
@@ -268,7 +282,8 @@ label,
 }
 
 .nav__sidebar > .nav__sidebar--list {
-	position: relative;
+  position: relative;
+  top: 54px;
 	overflow-y: auto;
 	color: var(--main-dark);
 }
@@ -302,13 +317,17 @@ label,
 	width: 100%;
 }
 
+.nav__sidebar li:first-child {
+	border-top: 1px solid var(--main-dark, black);
+}
+
 .nav__sidebar li {
 	border-bottom: 1px solid var(--main-dark, black);
 }
 
 .nav__sidebar li > a {
 	width: 100%;
-	padding: 16px 16px 16px 28px;
+	padding: 16px;
 	display: block;
 	color: var(--main-dark, black);
 	text-decoration: none;
@@ -350,9 +369,9 @@ label,
 }
 
 .main__dashboard--inner {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	column-gap: 20px;
+  display: flex;
+  flex-direction: column;
+	grid-template-columns: unset;
 	row-gap: 20px;
 }
 
@@ -629,6 +648,10 @@ label,
 	overflow-y: auto;
 }
 
+.preview--inner * {
+  max-width: 100%;
+}
+
 .preview--inner a {
 	color: var(--main-label);
 	text-decoration: underline;
@@ -715,4 +738,35 @@ label,
 .form__login button {
 	margin: 20px auto;
 	padding: 12px 36px;
+}
+
+@media screen and (min-width: 480px) {
+  .header > * {
+    margin-right: 28px;
+  }
+
+  .header__user--inner {
+    margin: 0 20px;
+  }
+
+  nav button,
+  nav .button {
+    padding: 5px 10px;
+    font-size: 1em;
+  }
+
+  .header__nav--new {
+    top: 0;
+  }
+
+  .header__nav--new-span {
+    display: inline-block;
+  }
+
+  .main__dashboard--inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    column-gap: 20px;
+    row-gap: 20px;
+  }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import NoteContext from "../context/NoteContext";
 import NoteApiService from "../services/note-api-service";
-import { LockIcon, SaveIcon, CloseIcon, SpinnerIcon } from "./Icons";
+import { SaveIcon, CloseIcon, DeleteIcon, SpinnerIcon } from "./Icons";
 import MdParser from "../utils/md-parser";
 
 class Note extends React.Component {
@@ -25,8 +25,7 @@ class Note extends React.Component {
 	};
 
 	updateContext = (note) => {
-		this.context.setNote(note);
-		
+		this.context.setNote(note);	
 	};
 
 	handleParsing = (content) => {
@@ -74,7 +73,24 @@ class Note extends React.Component {
 		} else {
 			this.postNote(title, content);
 		}
-	};
+  };
+  
+  postNote = (title, content) => {
+		this.setState({ success: 'Creating new note' }, () => {
+			this.showSaveAlert();
+    });
+
+		NoteApiService.postNote(title, content)
+			.then((note) => {
+        this.updateContext(note);
+				this.props.addNote(note);
+				this.showSaveAlert(note);
+			})
+			.catch((error) => {
+				const err = JSON.stringify(error.error);
+				this.context.setError(`${err} Could not create the note`);
+			});
+  };
 
 	patchNote = (id, title, content) => {
 		this.setState({ success: 'Updating your note' }, () => {
@@ -92,23 +108,47 @@ class Note extends React.Component {
 				this.context.setError(`${err} Could not update the note`);
 			});
 	};
-
-	postNote = async (title, content) => {
-		this.setState({ success: 'Creating new note' }, () => {
-			this.showSaveAlert();
+  
+  deleteNote = () => {
+    const id = this.props.match.params.id
+		this.setState({ success: 'Deleting note' }, () => {
+			this.showDeleteAlert();
 		});
 
-		NoteApiService.postNote(title, content)
-			.then((note) => {
-        this.updateContext(note);
-				this.props.addNote(note);
-				this.showSaveAlert(note);
+		NoteApiService.deleteNote(id)
+			.then((res) => {
+				this.props.deleteNote(id);
+        this.showDeleteAlert();
 			})
 			.catch((error) => {
 				const err = JSON.stringify(error.error);
-				this.context.setError(`${err} Could not create the note`);
+				this.context.setError(`${err} Could not delete the note`);
 			});
-	};
+  };
+  
+  showDeleteAlert = () => {
+		// this is the element that displays our save indicator
+		const element = document.getElementById('editor__save--alert');
+
+    // clear the saving indicator after 2sec of displaying it
+    // or if error is shown on click of x
+		if (element.classList.contains('visible') && this.context.error === null) {
+			const saveDelay = setTimeout(() => {
+        element.classList.toggle('visible');
+        this.props.history.push(`/dashboard`);
+				clearTimeout(saveDelay);
+			}, 2000);
+			return;
+		} else if (this.context.error !== null) {
+      this.context.clearError();
+      element.classList.toggle('visible');
+      return;
+    }
+
+		// show the saving indicator when save button clicked
+		element.classList.toggle('visible');
+		return;
+  };
 
 	showSaveAlert = (note) => {
 		// this is the element that displays our save indicator
@@ -135,7 +175,7 @@ class Note extends React.Component {
   };
   
   renderSaveAlert = () => {
-    if (!this.context.error) {
+    if (this.context.error === null) {
       return (
         <>
           <div>{this.state.success} &nbsp;&nbsp;&nbsp;</div>
@@ -157,7 +197,7 @@ class Note extends React.Component {
 	};
 
 	render() {
-		const { title, content, markup } = this.state;
+    const { title, content, markup } = this.state;
 		return (
 			<div className='editor__wrapper'>
 				<div className='editor__above'>
@@ -180,19 +220,11 @@ class Note extends React.Component {
 						<button onClick={(e) => this.handleSubmit(e)}>
 							<SaveIcon />
 						</button>
-						<button>
-							<LockIcon />
-						</button>
-            <button>
-							<CloseIcon />
-						</button>
-						{/* <button>
-              <MarkdownIcon />
-            </button> */}
-						{/* <button>
-              <FileIcon />
-              <span className="tooltip">Export</span>
-            </button> */}
+            { this.props.match.params.id && 
+              <button onClick={() => this.deleteNote()}>
+                <DeleteIcon />
+              </button>
+            }
 					</div>
 				</div>
 				<div className='editor__inner'>
