@@ -700,9 +700,10 @@ tr {
 	margin: 1em 0 1.5em;
 }
 
-.landing button {
+.landing button,
+.landing a.button {
 	font-size: 20px;
-	font-weight: 300;
+	font-weight: 400;
 	background-color: var(--main-dark);
 	color: var(--main-text);
 	padding: 12px 16px;

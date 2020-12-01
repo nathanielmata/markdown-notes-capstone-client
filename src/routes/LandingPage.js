@@ -6,7 +6,7 @@ export default class LandingPage extends Component {
       <div className="landing">
         <h1>Markdown Notes</h1>
         <h4>Create and save notes in Markdown right in your browser</h4>
-        <button onClick={() => this.props.history.push("/login")}>Try for free</button>
+        <a href="/login" className="button" >Try for free</a>
       </div>
     );
   }
